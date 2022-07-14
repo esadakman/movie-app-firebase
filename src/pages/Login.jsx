@@ -12,8 +12,8 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
-//
+import GoogleButton from "react-google-button";
+import Flex from "../components/globalStyles/Flex";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(2, 0, 2),
   },
 }));
 
@@ -61,6 +61,7 @@ const Login = () => {
           </Typography>
           <form className={classes.form} noValidate>
             <TextField
+              size="small"
               variant="outlined"
               margin="normal"
               required
@@ -72,6 +73,7 @@ const Login = () => {
               autoFocus
             />
             <TextField
+              size="small"
               variant="outlined"
               margin="normal"
               required
@@ -95,6 +97,13 @@ const Login = () => {
             >
               Sign In
             </Button>
+            <Flex style={{ marginBottom: "1rem" }}>
+              <GoogleButton
+                onClick={() => {
+                  console.log("Google button clicked");
+                }}
+              />
+            </Flex>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
