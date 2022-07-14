@@ -18,7 +18,9 @@ const Navbar = () => {
     <Nav justify="space-between" wrap="wrap">
       <Logo to="/">
         <IMG src={logo} alt="logo" />
-        <p>Movie App</p>
+        <p>
+          <i>Movie App</i>
+        </p>
       </Logo>
 
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
@@ -26,7 +28,7 @@ const Navbar = () => {
       </Hamburger>
 
       <Menu isOpen={isOpen} onClick={() => setIsOpen(false)}>
-        <MenuLink to="/">Home</MenuLink>
+        {/* <MenuLink to="/">Home</MenuLink> */}
         <MenuLink to="register">Register</MenuLink>
         <MenuLink to="login">Logout</MenuLink>
       </Menu>

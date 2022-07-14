@@ -5,8 +5,13 @@ import { Link } from "react-router-dom";
 export const Nav = styled(Flex)`
   padding: 1rem 1.5rem;
   background: ${({ theme }) => theme.colors.navBgColor};
-  position: fixed;
-  width: 100vw;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  /* @media (max-width: ${({ theme }) => theme.size.lg}) {
+    position: relative;
+  } */
 `;
 
 export const Logo = styled(Link)`
@@ -32,18 +37,19 @@ export const Hamburger = styled.div`
   display: none;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.turqo};
-  @media (max-width: ${({ theme }) => theme.size.lg}) {
+  @media (max-width: ${({ theme }) => theme.size.sm}) {
     display: block;
   }
 `;
 
 export const Menu = styled(Flex)`
-  @media (max-width: ${({ theme }) => theme.size.lg}) {
+  @media (max-width: ${({ theme }) => theme.size.sm}) {
     flex-direction: column;
     width: 100%;
     max-height: ${({ isOpen }) => (isOpen ? "400px" : "0")};
     overflow: hidden;
     transition: max-height 0.3s ease-in;
+    margin-top: 5px;
   }
 `;
 
@@ -56,13 +62,14 @@ export const MenuLink = styled(Link)`
   color: ${({ theme }) => theme.colors.turqo};
   transition: all 0.5s ease-in-out;
   &:hover {
-    color: white;
-    /* transform: scale(1.2); */
     background-color: ${({ theme }) => theme.colors.cardBack};
   }
-  @media (max-width: ${({ theme }) => theme.size.lg}) {
+
+  @media (max-width: ${({ theme }) => theme.size.sm}) {
     border-bottom: 1px solid ${({ theme }) => theme.colors.cardBack};
     width: 100%;
+    border-radius: 5px;
+    text-decoration: underline;
   }
 `;
 
