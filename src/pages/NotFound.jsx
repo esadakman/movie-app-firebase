@@ -1,7 +1,7 @@
-import vincent from "../../assets/vincent.gif";
-import SectionStyled, { DivStyled } from "./NotFound.styled";
+import vincent from "../assets/vincent.gif";
+import SectionStyled, { DivStyled } from "./styles/NotFound.styled";
 import { useNavigate } from "react-router-dom";
-import { ButtonStyleCard } from "../../components/globalStyles/Flex";
+import { ButtonStyleCard } from "../components/globalStyles/Flex";
 
 const NotFound = () => {
   const navigate = useNavigate();
