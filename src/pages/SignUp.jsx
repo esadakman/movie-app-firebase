@@ -3,7 +3,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-
 import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -12,9 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
 import Flex from "../components/globalStyles/Flex";
+// import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import { register } from "../config/firebase";
-// eslint-disable-next-line no-unused-vars
-import { async } from "@firebase/util";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,17 +45,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Register = ({ history }) => {
+const SignUp = () => {
   const classes = useStyles();
   // const [user, setUser] = useState(null);
-
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  //
 
+  // const { register } = UserAuth();
+  const navigate = useNavigate();
+  //
   const handleSignUp = async (e) => {
+    const displayName = `${firstName} ${lastName}`;
     e.preventDefault();
-    const user = await register(email, password);
-    console.log(user);
+    // const user = await register(email, password, displayName, navigate);
+    register(email, password, displayName, navigate);
+    // console.log(user);
   };
   return (
     <Grid container component="main" className={classes.root}>
@@ -72,7 +78,7 @@ const Register = ({ history }) => {
           </Typography>
           <form className={classes.form} noValidate onSubmit={handleSignUp}>
             <Grid container spacing={2}>
-              {/* <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="fname"
                   size="small"
@@ -96,9 +102,9 @@ const Register = ({ history }) => {
                   name="lastName"
                   autoComplete="lname"
                   size="small"
-                  // onChange={(e) => setLastName(e.target.value)}
+                  onChange={(e) => setLastName(e.target.value)}
                 />
-              </Grid> */}
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
@@ -160,7 +166,7 @@ const Register = ({ history }) => {
   );
 };
 
-export default Register;
+export default SignUp;
 
 // const MadeWithLove = () => (
 //   <Typography variant="body2" color="textSecondary" align="center">

@@ -16,6 +16,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
 import Flex from "../components/globalStyles/Flex";
 import { login } from "../config/firebase";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,10 +56,11 @@ const Login = () => {
   // };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
+    const user = await login(email, password, navigate);
     console.log(user);
   };
 

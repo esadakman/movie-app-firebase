@@ -1,10 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 import toast from "react-hot-toast";
@@ -22,24 +23,30 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-const auth = getAuth();
+export const auth = getAuth(app);
 
-export const register = async (email, password) => {
+// export const register = async (email, password, displayName) => {
+export const register = async (email, password, displayName, navigate) => {
   try {
     const { user } = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
+    await updateProfile(auth.currentUser, { displayName: displayName });
+    navigate("/");
+    toast.success("Signed Up");
     return user;
   } catch (error) {
     toast.error(error.message);
   }
 };
 
-export const login = async (email, password) => {
+export const login = async (email, password, navigate) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
+    toast.success("Logged In");
+    navigate("/");
     return user;
   } catch (error) {
     toast.error(error.message);
@@ -49,10 +56,13 @@ export const login = async (email, password) => {
 export const logout = async () => {
   try {
     await signOut(auth);
+    toast.success('"logged out successfully"');
     return true;
   } catch (error) {
     toast.error(error.message);
   }
 };
+
+// const provider = new auth.EmailAuthProvider();
 
 export default app;
