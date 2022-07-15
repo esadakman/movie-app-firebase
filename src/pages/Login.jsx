@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -14,6 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
 import Flex from "../components/globalStyles/Flex";
+import { login } from "../config/firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,6 +48,19 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = () => {
   const classes = useStyles();
+  // const [user, setUser] = useState(null);
+
+  // const login = () => {
+  //   auth.signInWithPopup(provider).catch((error) => alert(error.message));
+  // };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const user = await login(email, password);
+    console.log(user);
+  };
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -59,7 +74,7 @@ const Login = () => {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleLogin}>
             <TextField
               size="small"
               variant="outlined"
@@ -71,6 +86,7 @@ const Login = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
               size="small"
@@ -83,6 +99,7 @@ const Login = () => {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -99,6 +116,7 @@ const Login = () => {
             </Button>
             <Flex style={{ marginBottom: "1rem" }}>
               <GoogleButton
+                // label=""
                 onClick={() => {
                   console.log("Google button clicked");
                 }}

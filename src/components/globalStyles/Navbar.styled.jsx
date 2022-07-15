@@ -3,7 +3,7 @@ import Flex from "../../components/globalStyles/Flex";
 import { Link } from "react-router-dom";
 
 export const Nav = styled(Flex)`
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 1rem;
   background: ${({ theme }) => theme.colors.navBgColor};
   position: sticky;
   width: 100%;
@@ -19,7 +19,7 @@ export const Logo = styled(Link)`
   color: ${({ theme }) => theme.colors.Bloggy1};
   text-decoration: none;
   font-weight: 800;
-  font-size: 2rem;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -30,13 +30,23 @@ export const Logo = styled(Link)`
 `;
 
 export const IMG = styled.img`
-  width: 3rem;
+  width: 40px;
 `;
 
 export const Hamburger = styled.div`
   display: none;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.turqo};
+
+  & > svg {
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    &:hover {
+      /* background-color: ${({ theme }) => theme.colors.cardBack}; */
+      color: white;
+    }
+  }
   @media (max-width: ${({ theme }) => theme.size.sm}) {
     display: block;
   }
@@ -55,14 +65,16 @@ export const Menu = styled(Flex)`
 
 export const MenuLink = styled(Link)`
   text-align: center;
-  padding: 1rem;
+  padding: 11px 8px;
   font-size: 1.2rem;
   cursor: pointer;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.turqo};
   transition: all 0.5s ease-in-out;
+  border-radius: 5px;
   &:hover {
     background-color: ${({ theme }) => theme.colors.cardBack};
+    color: white;
   }
 
   @media (max-width: ${({ theme }) => theme.size.sm}) {

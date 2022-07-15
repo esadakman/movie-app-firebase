@@ -11,6 +11,8 @@ const theme = {
     mainColor: "#00adb5",
     logoColor: "#393e46",
     linkColor: "#02475e",
+    googleBlue: "#4285f4",
+    buttonActiveBlue: "#1669F2",
   },
   size: {
     xs: "560px",

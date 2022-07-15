@@ -7,11 +7,13 @@ import Main from "../pages/Main";
 import MovieDetail from "../pages/MovieDetail";
 import NotFound from "../pages//NotFound";
 import Register from "../pages//Register";
+// import { AuthProvider } from "../context/Auth";
 
 const Router = () => {
   return (
-    <div>
+    <>
       <GlobalStyles />
+      {/* <AuthProvider> */}
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -23,7 +25,8 @@ const Router = () => {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </div>
+      {/* </AuthProvider> */}
+    </>
   );
 };
 
