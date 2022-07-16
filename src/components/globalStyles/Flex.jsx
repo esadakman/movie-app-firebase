@@ -35,11 +35,9 @@ export const ButtonStyleCard = styled.button`
 
 export const CardWrapper = styled.div`
   margin: 1rem;
-  border: 1px solid red;
-  width: 25rem;
+  width: 20rem;
   max-width: 650px;
-  height: 40rem;
-  /* height: fit-content; */
+  height: 34rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -91,31 +89,66 @@ export const Desc = styled.div`
   clip-path: circle(0% at 100% 100%);
 
   & > h2 {
-    color: #ff3838;
+    text-align: left;
+    color: ${({ theme }) => theme.colors.navBgColor};
     letter-spacing: 1px;
-    margin-bottom: 10px;
+    margin: 10px 0;
+
+    font-weight: 400;
   }
   & > p {
+    overflow: auto;
+    /* text-indent: px; */
+    padding-right: 8px;
     line-height: 24px;
     font-size: 1.5rem;
     text-align: justify;
-    height: 80%;
+    height: 85%;
+  }
+`;
+
+//
+
+export const TitleCard = styled.div`
+  position: relative;
+  height: 5rem;
+  background-color: ${({ theme }) => theme.colors.cardBack};
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 1rem;
+
+  & > p {
+    color: white;
+    font-family: "Roboto", sans-serif;
+    width: 85%;
+    overflow: auto;
+  }
+
+  & > span {
+    position: absolute;
+    right: 0.5rem;
+    padding: 5px;
+    border-radius: 0.5rem;
+    color: white;
+    background-color: ${({ theme }) => theme.colors.success};
   }
 `;
 
 export const ButtonCard = styled.button`
-  width: fit-content;
-  height: 40px;
-  cursor: pointer;
-  border-style: none;
-  background-color: #ff3838;
-  color: #fff;
-  font-size: 15px;
-  outline: none;
-  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
-  transition: all 0.5s ease-in-out;
-  :hover {
-    transform: scale(0.95) translateX(-5px);
-    transition: all 0.5s ease-in-out;
-  }
+  //   width: fit-content;
+  //   height: 40px;
+  //   cursor: pointer;
+  //   border-style: none;
+  //   background-color: #ff3838;
+  //   color: #fff;
+  //   font-size: 15px;
+  //   outline: none;
+  //   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
+  //   transition: all 0.5s ease-in-out;
+  //   :hover {
+  //     transform: scale(0.95) translateX(-5px);
+  //     transition: all 0.5s ease-in-out;
+  //   }
+  //
 `;

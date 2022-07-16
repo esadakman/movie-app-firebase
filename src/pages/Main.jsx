@@ -14,45 +14,23 @@ const Main = () => {
   const getData = async () => {
     const { data } = await axios.get(url);
     console.log(data);
+    setMovies(data.results);
   };
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <CardArea>
-        <MovieCard></MovieCard>
+        {movies?.map((item) => (
+          <MovieCard {...item} key={item.id} />
+        ))}
       </CardArea>
     </>
   );
 };
 
 export default Main;
-
-//   /* <CardWrapper>
-// <Card>
-//   <img
-//     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6uiZHpBI9UxOPjR2_MF2fBZeoj-Js4xvIZA&usqp=CAU"
-//     alt=""
-//   />
-//   <Desc>
-//     <h2>Equalizer 2</h2>
-//     <p>
-//       If you have a problem and there is nowhere else to turn, the
-//       mysterious and elusive Robert McCall will deliver the vigilante
-//       justice you seek. This time, however, McCall's past cuts
-//       especially close to home when thugs kill Susan Plummer -- his
-//       best friend and former colleague. Now out for revenge, McCall
-//       must take on a crew of highly trained assassins who'll stop at
-//       nothing to destroy him.{" "}
-//     </p>
-//     <ButtonCard>
-//       <i class="fab fa-youtube"></i>
-//       Play trailer on YouTube
-//     </ButtonCard>
-//   </Desc>
-// </Card>
-// <h1>Inglorius</h1>
-// </CardWrapper> */

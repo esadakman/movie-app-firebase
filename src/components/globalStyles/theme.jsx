@@ -13,6 +13,9 @@ const theme = {
     linkColor: "#02475e",
     googleBlue: "#4285f4",
     buttonActiveBlue: "#1669F2",
+    success: "#5cb85c",
+    warning: "#f0ad4e",
+    danger: "#d9534f",
   },
   size: {
     xs: "560px",

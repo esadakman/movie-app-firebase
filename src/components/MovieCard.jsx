@@ -1,32 +1,38 @@
-import { ButtonCard, Card, CardWrapper, Desc } from "./globalStyles/Flex";
-
-const MovieCard = () => {
+import Flex, {
+  ButtonCard,
+  Card,
+  CardWrapper,
+  Desc,
+  TitleCard,
+} from "./globalStyles/Flex";
+const IMG_URL = "https://image.tmdb.org/t/p/w1280";
+const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
   return (
     <div>
       <CardWrapper>
         <Card>
-          <img
-            src="https://s3.gomedia.us/wp-content/uploads/2010/01/inglourious.jpg"
-            alt=""
-          />
+          <img src={IMG_URL + poster_path} alt="" />
           <Desc>
-            <h2>Equalizer 2</h2>
-            <p>
-              If you have a problem and there is nowhere else to turn, the
-              mysterious and elusive Robert McCall will deliver the vigilante
-              justice you seek. This time, however, McCall's past cuts
-              especially close to home when thugs kill Susan Plummer -- his best
-              friend and former colleague. Now out for revenge, McCall must take
-              on a crew of highly trained assassins who'll stop at nothing to
-              destroy him.{" "}
-            </p>
-            <ButtonCard>
-              <i className="fab fa-youtube"></i>
-              Play trailer on YouTube
-            </ButtonCard>
+            <h2>Overview</h2>
+            <p>{overview} </p>
           </Desc>
         </Card>
-        <h1>Inglorius</h1>
+        <TitleCard>
+          <p>{title}</p>
+          <span
+            style={{
+              backgroundColor: `${
+                vote_average >= 8
+                  ? "green"
+                  : vote_average >= 6
+                  ? "orange"
+                  : "red"
+              }`,
+            }}
+          >
+            {vote_average.toFixed(1)}
+          </span>
+        </TitleCard>
       </CardWrapper>
     </div>
   );
