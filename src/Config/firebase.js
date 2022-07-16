@@ -5,7 +5,6 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  onAuthStateChanged,
 } from "firebase/auth";
 
 import toast from "react-hot-toast";
