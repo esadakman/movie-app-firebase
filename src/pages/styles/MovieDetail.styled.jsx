@@ -1,160 +1,152 @@
 import styled from "styled-components";
 
-export const DetailsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  /* height: 85vh; */
-`;
-
-export const LabelDiv = styled.div`
-  padding: 1rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.5rem;
-  /* max-width: 90%; */
+const MovieCard = styled.div`
+  position: relative;
+  display: block;
+  width: 800px;
+  height: 350px;
+  margin: 80px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.4s;
+  box-shadow: 0px 0px 120px -25px rgba(0, 0, 0, 0.5);
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 80px -25px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s;
+  }
   @media (max-width: ${({ theme }) => theme.size.mdl}) {
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-
-  & > p {
-    width: 38rem;
-    font-size: 2rem !important;
-    @media (max-width: ${({ theme }) => theme.size.md}) {
-      width: fit-content;
-      min-width: 19rem;
-    }
-  }
-  & > div {
-    text-align: center;
-    height: fit-content;
+    width: 80%;
   }
 `;
 
-export const CardDiv = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid ${({ theme }) => theme.colors.navColor};
-  border-radius: 1rem;
-  width: 80vw;
-  gap: 1rem;
-  margin: 1rem 0 2rem 0;
-  padding: 1rem;
-  background-color: #d4f1ff;
-  /* @media (max-width: ${({ theme }) => theme.size.lg}) {
-    flex-direction: column;
+export const InfoSection = styled.div`
+  border: solid 1px red;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-blend-mode: multiply;
+  z-index: 2;
+  border-radius: 10px;
+  @media (min-width: ${({ theme }) => theme.size.md}) {
+    background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
+  }
+  @media (max-width: ${({ theme }) => theme.size.mdl}) {
+    background: linear-gradient(to top, #e5e6e6 40%, transparent 100%);
+    display: inline-grid;
+  }
+  /* @media (max-width: ${({ theme }) => theme.size.mdl}) {
+    background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
+  } */
+`;
+
+export const MovieHeader = styled.div`
+  position: relative;
+  padding: 1.5rem;
+  height: 40%;
+
+  /* @media (min-width: ${({ theme }) => theme.size.md}) {
+    width: 65%;
   } */
   @media (max-width: ${({ theme }) => theme.size.mdl}) {
-    width: 70%;
-    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
   }
-  @media (max-width: ${({ theme }) => theme.size.md}) {
-    /* width: 80%; */
+  & > img {
+    position: relative;
+    float: left;
+    margin-right: 20px;
+    height: 120px;
+    box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+  }
+  & > h1 {
+    color: black;
+    font-weight: 400;
+  }
+  & > h4 {
+    color: #4a4a4a;
+    font-weight: 400;
+  }
+  & > span {
+    display: inline-block;
+    margin-top: 15px;
+    color: #555;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  & > p {
+    /* display: inline-block; */
+    color: #454444;
+    margin-left: 10px;
   }
 `;
 
-export const MealInfo = styled.div`
-  display: flex;
-  /* justify-content: flex-end; */
-  justify-content: center;
-  gap: 1rem;
-  width: 30%;
-  min-width: 13rem;
-  height: 100%;
-
-  & > p {
-    font-size: 1.1rem;
-    text-align: right;
-    font-family: "Patrick Hand", cursive;
-    line-height: 1.5rem;
-    letter-spacing: 0.5px;
-    color: black;
-    & > span {
-      margin-left: 0.3rem;
-      color: #de3636;
-    }
+export const MovieDesc = styled.div`
+  padding: 25px;
+  margin-top: 1rem;
+  height: auto;
+  @media (min-width: ${({ theme }) => theme.size.md}) {
+    width: 50%;
   }
   @media (max-width: ${({ theme }) => theme.size.mdl}) {
-    justify-content: center;
-    width: fit-content;
-    border: 1px solid ${({ theme }) => theme.colors.navColor};
-    border-radius: 0.5rem;
+    width: 100%;
+    min-width: 15rem;
+  }
+  & > p {
+    color: #00000084;
   }
 `;
 
-export const IMGDiv = styled.div`
-  width: 30%;
-  min-width: 15rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const Blur = styled.div`
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 11px;
+  right: 0;
+  z-index: 1;
 
   & > img {
-    /* background-color: ${({ theme }) => theme.colors.turqo}; */
-    border: 1px solid ${({ theme }) => theme.colors.navColor};
-    border-radius: 1rem;
-    width: 14rem;
-    padding: 0.5rem;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  }
-  @media (max-width: ${({ theme }) => theme.size.mdl}) {
-    width: 90%;
+    background-size: contain;
+    height: 100%;
+    @media (min-width: ${({ theme }) => theme.size.md}) {
+      width: 100%;
+      background-position: 100% 10% !important;
+    }
+    @media (max-width: ${({ theme }) => theme.size.mdl}) {
+      height: auto;
+      min-height: 15rem;
+      width: 100%;
+      min-width: 30rem;
+      background-position: 50% 50% !important;
+    }
   }
 `;
 
-export const MealIngredients = styled.div`
-  width: 30%;
-  min-width: 13rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 1rem;
-  justify-content: center;
-  border: 1px solid ${({ theme }) => theme.colors.navColor};
-  border-radius: 0.5rem;
-  /* padding: 0.4rem; */
-  & > div {
-    height: 14rem;
-    overflow: auto;
-    & > p {
-      text-indent: 5px;
-      justify-content: flex-start !important;
-      text-align: left;
-      font-size: 1rem;
-      font-family: "Patrick Hand", cursive;
-      & > span {
-        color: #c44a4a;
-      }
-    }
+export default MovieCard;
 
-    ::-webkit-scrollbar {
-      width: 0.8rem;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: ${({ theme }) => theme.colors.navColor};
-      border-radius: 0.5rem;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      border-radius: 0.5rem;
-      background: ${({ theme }) => theme.colors.turqo};
-
-      ::-webkit-scrollbar-hover {
-        opacity: 0.5;
-      }
-    }
-  }
-  @media (max-width: ${({ theme }) => theme.size.mdl}) {
-    /* justify-content: center; */
-    /* width: 80%; */
-    width: 70%;
-  }
-`;
+// export const MovieSocial = styled.div`
+//   height: 10%;
+//   padding-left: 15px;
+//   padding-bottom: 20px;
+//   & > ul {
+//     list-style: none;
+//     padding: 0;
+//     & > li {
+//       display: inline-block;
+//       color: rgba(0, 0, 0, 0.3);
+//       transition: color 0.3s;
+//       transition-delay: 0.15s;
+//       margin: 0 10px;
+//       :hover {
+//         transition: color 0.3s;
+//         color: rgba(0, 0, 0, 0.7);
+//       }
+//       & > i {
+//         font-size: 19px;
+//         cursor: pointer;
+//       }
+//     }
+//   }
+// `;

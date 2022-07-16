@@ -21,6 +21,7 @@ const theme = {
     xs: "560px",
     sm: "640px",
     md: "768px",
+    mdl: "855px",
     lg: "992px",
     xlg: "1200px",
     xxlg: "1400px",
