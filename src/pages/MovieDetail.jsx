@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import Flex from "../components/globalStyles/Flex";
 import MovieCard, {
   Blur,
   InfoSection,
@@ -10,52 +11,48 @@ import MovieCard, {
 const API_KEY = process.env.REACT_APP_API_KEY;
 const MovieDetail = () => {
   const { id } = useParams();
-  console.log(id);
-
+  const [movieDatas, setMovieDatas] = useState();
+  const [trailer, setTrailer] = useState();
+  //
   const IMG_URL = "https://image.tmdb.org/t/p/w1280";
   const movieDetailUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
   const videoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`;
 
   const getMovieDetail = async () => {
-    const { data } = await axios.get(movieDetailUrl);
-    console.log(data);
+    try {
+      const { data } = await axios.get(movieDetailUrl);
+      // console.log(data);
+      setMovieDatas(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  useEffect(() => {
-    getMovieDetail();
-  }, []);
 
   return (
     <div>
+      {/* <Flex> */}
       <MovieCard>
         <InfoSection>
           <MovieHeader>
-            <img
-              src="https://movieplayer.net-cdn.it/t/images/2017/12/20/bright_jpg_191x283_crop_q85.jpg"
-              alt=""
-            />
-            <h1>Bright</h1>
+            <img src={IMG_URL + movieDatas?.poster_path} alt="" />
+            <h3>{movieDatas?.title}</h3>
             <h4>2017, David Ayer</h4>
-            <span>117 min</span>
-            <p>Action, Crime, Fantasy</p>
+            <span>{movieDatas?.runtime} min</span>
+            <p>
+              {movieDatas?.genres[0].name}
+              {/* {movieDatas.genres[1].name}, */}
+              {/* {movieDatas.genres[2].name} */}
+            </p>
           </MovieHeader>
           <MovieDesc>
-            <p>
-              Set in a world where fantasy creatures live side by side with
-              humans. A human cop is forced to work with an Orc to find a weapon
-              everyone is prepared to kill for.
-            </p>
+            <p>{movieDatas?.overview}</p>
           </MovieDesc>
         </InfoSection>
         <Blur>
-          <img
-            src={
-              "https://occ-0-2433-448.1.nflxso.net/art/cd5c9/3e192edf2027c536e25bb5d3b6ac93ced77cd5c9.jpg"
-            }
-            alt=""
-          ></img>
+          <img src={IMG_URL + movieDatas?.backdrop_path} alt=""></img>
         </Blur>
       </MovieCard>
+      {/* </Flex> */}
     </div>
   );
 };

@@ -5,7 +5,7 @@ const MovieCard = styled.div`
   display: block;
   width: 800px;
   height: 350px;
-  margin: 80px auto;
+  margin: 2rem auto;
   overflow: hidden;
   border-radius: 10px;
   font-size: 1rem;
@@ -72,7 +72,7 @@ export const MovieHeader = styled.div`
     display: inline-block;
     margin-top: 15px;
     color: #555;
-    padding: 5px;
+    padding: 5px 0;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.05);
   }
@@ -84,7 +84,7 @@ export const MovieHeader = styled.div`
 `;
 
 export const MovieDesc = styled.div`
-  padding: 25px;
+  padding: 0 25px;
   margin-top: 1rem;
   height: auto;
   @media (min-width: ${({ theme }) => theme.size.md}) {
@@ -93,6 +93,7 @@ export const MovieDesc = styled.div`
   @media (max-width: ${({ theme }) => theme.size.mdl}) {
     width: 100%;
     min-width: 15rem;
+    margin-top: 0;
   }
   & > p {
     color: #00000084;
@@ -109,6 +110,7 @@ export const Blur = styled.div`
 
   & > img {
     background-size: contain;
+
     height: 100%;
     @media (min-width: ${({ theme }) => theme.size.md}) {
       width: 100%;
@@ -116,6 +118,7 @@ export const Blur = styled.div`
     }
     @media (max-width: ${({ theme }) => theme.size.mdl}) {
       height: auto;
+
       min-height: 15rem;
       width: 100%;
       min-width: 30rem;
