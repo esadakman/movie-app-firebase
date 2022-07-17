@@ -12,12 +12,12 @@ export const MovieContainer = styled.div`
 const MovieCard = styled.div`
   position: relative;
   display: block;
-  width: 800px;
-  height: 350px;
+  width: 80vw;
+  height: 55vh;
   overflow: hidden;
   border-radius: 10px;
   font-size: 1rem;
-  transition: all 0.4s;
+  transition: all 0.2s;
   box-shadow: 0px 0px 120px -25px rgba(0, 0, 0, 0.5);
   &:hover {
     transform: scale(1.02);
@@ -26,6 +26,38 @@ const MovieCard = styled.div`
   }
   @media (max-width: ${({ theme }) => theme.size.mdl}) {
     width: 80%;
+  }
+  @media (max-width: ${({ theme }) => theme.size.md}) {
+    height: 80%;
+  }
+  @media (max-width: ${({ theme }) => theme.size.xs}) {
+    height: auto;
+  }
+`;
+
+export const RateSpan = styled.span`
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 4;
+  padding: 5px;
+  border-radius: 0.5rem;
+  color: #fff;
+`;
+
+export const LeftDiv = styled.div`
+  width: 40rem;
+  border: 1px solid red;
+  height: 100%;
+  transition: all 0.2s;
+  @media (max-width: ${({ theme }) => theme.size.lg}) {
+    width: 30rem;
+  }
+  @media (max-width: ${({ theme }) => theme.size.md}) {
+    width: 25rem;
+  }
+  @media (max-width: ${({ theme }) => theme.size.sm}) {
+    width: 100%;
   }
 `;
 
@@ -44,67 +76,84 @@ export const InfoSection = styled.div`
     background: linear-gradient(to top, #e5e6e6 40%, transparent 100%);
     display: inline-grid;
   }
-  /* @media (max-width: ${({ theme }) => theme.size.mdl}) {
-    background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
-  } */
 `;
 
 export const MovieHeader = styled.div`
   position: relative;
   padding: 1.5rem;
   height: 40%;
-
-  /* @media (min-width: ${({ theme }) => theme.size.md}) {
-    width: 65%;
-  } */
-  @media (max-width: ${({ theme }) => theme.size.mdl}) {
+  display: flex;
+  width: 100%;
+  & > div.imgContainer {
+    & > img {
+      position: relative;
+      margin-right: 20px;
+      height: 8rem;
+      box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+    }
+    @media (max-width: ${({ theme }) => theme.size.xs}) {
+      display: none;
+    }
+  }
+  & > div.textContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
     width: 100%;
-    margin-top: 2rem;
-  }
-  & > img {
-    position: relative;
-    float: left;
-    margin-right: 20px;
-    height: 120px;
-    box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
-  }
-  & > h1 {
-    color: black;
-    font-weight: 400;
-  }
-  & > h4 {
-    color: #4a4a4a;
-    font-weight: 400;
-  }
-  & > span {
-    display: inline-block;
-    margin-top: 15px;
-    color: #555;
-    padding: 5px 0;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  & > p {
-    /* display: inline-block; */
-    color: #454444;
-    margin-left: 10px;
+    height: 8rem;
+    @media (max-width: ${({ theme }) => theme.size.sm}) {
+      font-weight: bolder;
+      background-color: #24222278;
+      padding: 5px;
+    }
+    & > h3 {
+      color: #000000;
+      text-shadow: 0 0 2px white;
+    }
+    & > h4 {
+      color: #070707;
+      text-shadow: 0 0 2px white;
+      /* font-weight: 400; */
+    }
+    & > p.runTime {
+      margin-top: 1rem;
+      color: #171717;
+      text-shadow: 0 0 2px white;
+    }
+    & > p.genre {
+      color: #000;
+      text-shadow: 0 0 2px white;
+    }
   }
 `;
 
 export const MovieDesc = styled.div`
-  padding: 0 25px;
-  margin-top: 1rem;
-  height: auto;
-  @media (min-width: ${({ theme }) => theme.size.md}) {
-    width: 50%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  margin-left: 25px;
+  margin-top: 1.5rem;
+  height: 50%;
+  width: 92%;
+  @media (max-width: ${({ theme }) => theme.size.sm}) {
+    margin-top: 5px;
+    width: 85%;
+    height: 55%;
   }
-  @media (max-width: ${({ theme }) => theme.size.mdl}) {
-    width: 100%;
-    min-width: 15rem;
-    margin-top: 0;
+  @media (max-width: ${({ theme }) => theme.size.xs}) {
+    width: 80%;
   }
+
   & > p {
-    color: #00000084;
+    overflow: auto;
+    color: #000;
+    border: 1px solid black;
+    height: 90%;
+    width: 100%;
+  }
+  & > button {
+    /* width: 5rem; */
   }
 `;
 

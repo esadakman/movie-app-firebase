@@ -34,7 +34,13 @@ const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
         <span
           style={{
             backgroundColor: `${
-              vote_average >= 8 ? "green" : vote_average >= 6 ? "orange" : "red"
+              vote_average >= 8
+                ? "green"
+                : vote_average >= 6
+                ? "orange"
+                : vote_average >= 4
+                ? "#e8e80fc8"
+                : "red"
             }`,
           }}
         >

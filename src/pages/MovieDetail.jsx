@@ -7,6 +7,8 @@ import MovieCard, {
   MovieContainer,
   MovieDesc,
   MovieHeader,
+  RateSpan,
+  LeftDiv,
 } from "./styles/MovieDetail.styled";
 import ModalYoutube from "../components/ModalYoutube";
 import theatre from "../assets/theatre.jpg";
@@ -29,7 +31,7 @@ const MovieDetail = () => {
   const getMovieDetail = async () => {
     try {
       const { data } = await axios.get(movieDetailUrl);
-      // console.log(data);
+      console.log(data);
       setMovieDatas(data);
 
       setLoading(true);
@@ -58,29 +60,46 @@ const MovieDetail = () => {
     <MovieContainer>
       {loading ? (
         <MovieCard>
+          <RateSpan
+            style={{
+              backgroundColor: `${
+                movieDatas?.vote_average >= 8
+                  ? "green"
+                  : movieDatas?.vote_average >= 6
+                  ? "orange"
+                  : movieDatas?.vote_average >= 4
+                  ? "#e8e80fc8"
+                  : "red"
+              }`,
+            }}
+          >
+            {movieDatas?.vote_average}
+          </RateSpan>
           <InfoSection>
-            <MovieHeader>
-              <img
-                src={
-                  movieDatas?.poster_path
-                    ? IMG_URL + movieDatas?.poster_path
-                    : theatre
-                }
-                alt=""
-              />
-              <h3>{movieDatas?.title}</h3>
-              <h4>2017, David Ayer</h4>
-              <span>{movieDatas?.runtime} min</span>
-              <p>
-                {movieDatas?.genres[0].name}
-                {/* {movieDatas.genres[1].name}, */}
-                {/* {movieDatas.genres[2].name} */}
-              </p>
-            </MovieHeader>
-            <MovieDesc>
-              <p>{movieDatas?.overview}</p>
-              <ModalYoutube trailerKey={trailer} />
-            </MovieDesc>
+            <LeftDiv>
+              <MovieHeader>
+                <div className="imgContainer">
+                  <img
+                    src={
+                      movieDatas?.poster_path
+                        ? IMG_URL + movieDatas?.poster_path
+                        : theatre
+                    }
+                    alt=""
+                  />
+                </div>
+                <div className="textContainer">
+                  <h3>{movieDatas?.title}</h3>
+                  <h4>{movieDatas?.release_date}</h4>
+                  <p className="runTime">{movieDatas?.runtime} min</p>
+                  <p className="genre">{movieDatas?.genres[0].name}</p>
+                </div>
+              </MovieHeader>
+              <MovieDesc>
+                <p>{movieDatas?.overview}</p>
+                <ModalYoutube trailerKey={trailer} />
+              </MovieDesc>
+            </LeftDiv>
           </InfoSection>
           <Blur>
             <img

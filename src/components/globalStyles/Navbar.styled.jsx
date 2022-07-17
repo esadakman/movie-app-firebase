@@ -86,6 +86,7 @@ export const MenuLink = styled(Link)`
 `;
 
 export const FooterStyle = styled.footer`
+  z-index: 5;
   display: flex;
   text-decoration: none;
   justify-content: space-between;

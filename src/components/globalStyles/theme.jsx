@@ -18,11 +18,11 @@ const theme = {
     danger: "#d9534f",
   },
   size: {
-    xs: "560px",
+    xs: "500px",
     sm: "640px",
     md: "768px",
     mdl: "855px",
-    lg: "992px",
+    lg: "1040px",
     xlg: "1200px",
     xxlg: "1400px",
   },
