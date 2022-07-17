@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import MovieCard, {
   Blur,
   InfoSection,
+  MovieContainer,
   MovieDesc,
   MovieHeader,
 } from "./styles/MovieDetail.styled";
@@ -45,8 +46,8 @@ const MovieDetail = () => {
   }, []);
 
   return (
-    <div>
-      {/* <Flex> */}
+    // <div>
+    <MovieContainer>
       <MovieCard>
         <InfoSection>
           <MovieHeader>
@@ -62,15 +63,15 @@ const MovieDetail = () => {
           </MovieHeader>
           <MovieDesc>
             <p>{movieDatas?.overview}</p>
+            <ModalYoutube trailerKey={trailer} />
           </MovieDesc>
         </InfoSection>
         <Blur>
           <img src={IMG_URL + movieDatas?.backdrop_path} alt=""></img>
         </Blur>
       </MovieCard>
-      <ModalYoutube trailerKey={trailer} />
-      {/* </Flex> */}
-    </div>
+    </MovieContainer>
+    // </div>
   );
 };
 

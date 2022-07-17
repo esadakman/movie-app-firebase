@@ -27,11 +27,7 @@ export const auth = getAuth(app);
 // export const register = async (email, password, displayName) => {
 export const register = async (email, password, displayName, navigate) => {
   try {
-    const { user } = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
+    const user = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, { displayName: displayName });
     navigate("/");
     toast.success("Signed Up");
@@ -61,6 +57,14 @@ export const logout = async () => {
     toast.error(error.message);
   }
 };
+
+// auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     console.log("user logged in");
+//   } else {
+//     console.log("user logged out");
+//   }
+// });
 
 // const provider = new auth.EmailAuthProvider();
 

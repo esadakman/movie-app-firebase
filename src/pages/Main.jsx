@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { logout } from "../auth/firebase";
+import { ButtonStyleCard } from "../components/globalStyles/Flex";
 import MovieCard from "../components/MovieCard";
+import { useAuthContext } from "../context/AuthContext";
 import CardArea from "./styles/Main.styled";
 
 const Main = () => {
@@ -13,7 +16,7 @@ const Main = () => {
 
   const getData = async () => {
     const { data } = await axios.get(url);
-    console.log(data);
+    // console.log(data);
     setMovies(data.results);
   };
 
@@ -21,9 +24,21 @@ const Main = () => {
     getData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  // ! AuthContext'te oluşturmuş olduğum hook'umu kullanıyorum
 
+  const { userCheck } = useAuthContext();
   return (
     <>
+      <ButtonStyleCard onClick={logout}>Sign Out</ButtonStyleCard>
+      {/* {userCheck ? (
+        <CardArea>
+          {movies?.map((item) => (
+            <MovieCard {...item} key={item.id} />
+          ))}
+        </CardArea>
+      ) : (
+        <p>ooppss</p>
+      )} */}
       <CardArea>
         {movies?.map((item) => (
           <MovieCard {...item} key={item.id} />

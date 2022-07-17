@@ -7,7 +7,7 @@ import Main from "../pages/Main";
 import MovieDetail from "../pages/MovieDetail";
 import NotFound from "../pages//NotFound";
 import SignUp from "../pages/SignUp";
-import { AuthProvider } from "../context/AuthContext";
+import { AuthContextProvider } from "../context/AuthContext";
 
 const Router = () => {
   return (
@@ -15,7 +15,7 @@ const Router = () => {
       <GlobalStyles />
 
       <BrowserRouter>
-        <AuthProvider>
+        <AuthContextProvider>
           <Navbar />
           <Routes>
             <Route path="/" element={<Main />} />
@@ -25,7 +25,7 @@ const Router = () => {
             <Route path="/*" element={<NotFound />} />
           </Routes>
           <Footer />
-        </AuthProvider>
+        </AuthContextProvider>
       </BrowserRouter>
     </>
   );

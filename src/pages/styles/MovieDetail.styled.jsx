@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
+export const MovieContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 85vh;
+  border: 1px red solid;
+`;
+
 const MovieCard = styled.div`
   position: relative;
   display: block;
   width: 800px;
   height: 350px;
-  margin: 2rem auto;
   overflow: hidden;
   border-radius: 10px;
   font-size: 1rem;

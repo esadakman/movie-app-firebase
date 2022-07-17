@@ -55,13 +55,13 @@ const SignUp = () => {
   //
 
   // const { register } = UserAuth();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   //
   const handleSignUp = async (e) => {
-    // const displayName = `${firstName} ${lastName}`;
+    const displayName = `${firstName} ${lastName}`;
     e.preventDefault();
     // const user = await register(email, password, displayName, navigate);
-    // register(email, password, displayName, navigate);
+    register(email, password, displayName, navigate);
     // console.log(user);
   };
   return (

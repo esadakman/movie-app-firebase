@@ -1,12 +1,19 @@
 import { Card, CardWrapper, Desc, TitleCard } from "./globalStyles/Flex";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
+import toast from "react-hot-toast";
 const IMG_URL = "https://image.tmdb.org/t/p/w1280";
 
 const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
   let navigate = useNavigate();
-
+  const { userCheck } = useAuthContext();
+  const handleDetail = (id) => {
+    userCheck ? navigate(`details/${id}`) : toast.error("You Need To sign in");
+    // console.log(id);
+    // navigate(`details/${id}`, { state: id })
+  };
   return (
-    <CardWrapper onClick={() => navigate(`details/${id}`, { state: id })}>
+    <CardWrapper onClick={() => handleDetail(id)}>
       <Card>
         <img src={IMG_URL + poster_path} alt="" />
         <Desc>

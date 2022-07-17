@@ -19,10 +19,10 @@ export default function BasicModal({ trailerKey }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  console.log(trailerKey);
+  // console.log(trailerKey);
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Watch Trailer</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -35,7 +35,7 @@ export default function BasicModal({ trailerKey }) {
               <iframe
                 src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1`}
                 frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="Embedded youtube"
               />

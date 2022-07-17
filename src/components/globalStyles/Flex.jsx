@@ -154,8 +154,7 @@ export const ButtonCard = styled.button`
 `;
 
 export const YoutubeDiv = styled.div`
-  /* background-color: #2e2d2db8; */
-  width: 70vw;
+  width: 63vw;
   height: 40vh;
   display: flex;
   justify-content: center;
