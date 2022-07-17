@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-import Flex from "../components/globalStyles/Flex";
+import { useParams } from "react-router-dom";
 import MovieCard, {
   Blur,
   InfoSection,
@@ -27,6 +26,22 @@ const MovieDetail = () => {
       console.log(error);
     }
   };
+  const getMovieTrailer = async () => {
+    try {
+      const { data } = await axios.get(videoUrl);
+      // console.log(data);
+      setTrailer(data.results[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(trailer);
+  //
+  useEffect(() => {
+    getMovieDetail();
+    getMovieTrailer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
