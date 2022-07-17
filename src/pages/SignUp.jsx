@@ -10,10 +10,11 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
-import Flex from "../components/globalStyles/Flex";
+import Flex, { ButtonStyleCard } from "../components/globalStyles/Flex";
 // import { UserAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import { register } from "../auth/firebase";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
+import { GoogleRegister, register } from "../auth/firebase";
+import { signInWithPopup } from "firebase/auth";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,8 +62,8 @@ const SignUp = () => {
     const displayName = `${firstName} ${lastName}`;
     e.preventDefault();
     // const user = await register(email, password, displayName, navigate);
-    register(email, password, displayName, navigate);
-    // console.log(user);
+    const user = register(email, password, displayName, navigate);
+    console.log(user);
   };
   return (
     <Grid container component="main" className={classes.root}>
@@ -133,28 +134,30 @@ const SignUp = () => {
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
+            <ButtonStyleCard
+              // type="submit"
+              // fullWidth
+              // variant="contained"
+              // color="primary"
               className={classes.submit}
-              disabled={!email || !password}
+              type="submit"
+              style={{ width: "100%", borderRadius: "1px" }}
+              // className={classes.submit}
             >
               Sign Up
-            </Button>
+            </ButtonStyleCard>
             <Flex style={{ marginBottom: "1rem" }}>
               <GoogleButton
                 // style={{ margi: "0" }}
                 label="Sign up with Google"
                 onClick={() => {
-                  console.log("Google button clicked");
+                  GoogleRegister();
                 }}
               />
             </Flex>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/" variant="body2">
+                <Link to="/Login" component={RouterLink}>
                   Already have an account? Sign in
                 </Link>
               </Grid>

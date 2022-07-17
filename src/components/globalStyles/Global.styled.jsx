@@ -23,7 +23,7 @@ export const GlobalStyles = createGlobalStyle`
 body{
     font-size: 1.5rem;
     ${({ theme }) => theme.colors.Bloggy1};
-
+    background-color:${({ theme }) => theme.colors.Bloggy1};
 
   }
 

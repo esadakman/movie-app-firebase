@@ -15,10 +15,10 @@ import { logout } from "../auth/firebase";
 // import MovieIcon from "@mui/icons-material/Movie";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { userCheck } = useAuthContext();
+  const { getData, userCheck, url } = useAuthContext();
   return (
     <Nav justify="space-between" wrap="wrap">
-      <Logo to="/">
+      <Logo to="/" onClick={() => getData(url)}>
         <IMG src={logo} alt="logo" />
         <p>
           <i>Movie App</i>

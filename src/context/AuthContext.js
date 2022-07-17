@@ -1,8 +1,9 @@
+import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase";
-// import { onAuthStateChanged } from "firebase/auth";
 const AuthContext = createContext({});
-
+const API_KEY = process.env.REACT_APP_API_KEY;
+const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 // ? consume function
 export const useAuthContext = () => {
   return useContext(AuthContext);
@@ -10,7 +11,17 @@ export const useAuthContext = () => {
 
 export const AuthContextProvider = ({ children }) => {
   const [userCheck, setUserCheck] = useState("");
-  const [movieId, setMovieId] = useState("");
+  const [movies, setMovies] = useState([]);
+
+  const getData = async (apiType) => {
+    try {
+      const { data } = await axios.get(apiType);
+      setMovies(data.results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -23,10 +34,12 @@ export const AuthContextProvider = ({ children }) => {
     });
   }, []);
   const values = {
-    movieId,
-    setMovieId,
     userCheck,
     setUserCheck,
+    getData,
+    movies,
+    url,
+    API_KEY,
   };
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };

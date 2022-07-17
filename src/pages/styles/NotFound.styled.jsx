@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const SectionStyled = styled.section`
-  width: 100vw;
+  width: 100%;
   height: 83vh;
   display: flex;
   position: relative;
@@ -9,6 +9,7 @@ const SectionStyled = styled.section`
   @media (max-width: ${({ theme }) => theme.size.sm}) {
     height: 85vh;
   }
+  overflow: hidden;
 `;
 
 export const DivStyled = styled.div`

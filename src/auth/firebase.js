@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 import toast from "react-hot-toast";
@@ -24,17 +26,32 @@ const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 
-// export const register = async (email, password, displayName) => {
 export const register = async (email, password, displayName, navigate) => {
   try {
-    const user = await createUserWithEmailAndPassword(auth, email, password);
-    await updateProfile(auth.currentUser, { displayName: displayName });
+    const { user } = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    // await updateProfile(auth.currentUser, { displayName: displayName });
     navigate("/");
     toast.success("Signed Up");
     return user;
   } catch (error) {
     toast.error(error.message);
   }
+};
+
+const provider = new GoogleAuthProvider();
+
+export const GoogleRegister = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // The signed-in user info.
+      const user = result.user;
+      return user;
+    })
+    .catch((error) => toast.error(error.message));
 };
 
 export const login = async (email, password, navigate) => {
@@ -58,14 +75,14 @@ export const logout = async () => {
   }
 };
 
-// auth.onAuthStateChanged((user) => {
-//   if (user) {
-//     console.log("user logged in");
-//   } else {
-//     console.log("user logged out");
-//   }
-// });
-
-// const provider = new auth.EmailAuthProvider();
+// signInWithPopup(auth, provider)
+//   .then((result) => {
+//     // The signed-in user info.
+//     const user = result.user;
+//   })
+//   .catch((error) => {
+//     // Handle Errors here.
+//     console.log(error);
+//   });
 
 export default app;

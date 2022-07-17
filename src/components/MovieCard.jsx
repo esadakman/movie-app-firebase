@@ -2,6 +2,7 @@ import { Card, CardWrapper, Desc, TitleCard } from "./globalStyles/Flex";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import defaultPoster from "../assets/posterNot.png";
 const IMG_URL = "https://image.tmdb.org/t/p/w1280";
 
 const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
@@ -11,11 +12,9 @@ const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
 
   const handleDetail = (id) => {
     if (userCheck) {
-      //   // setMovieId(id);
-      //   // console.log({ id });
       navigate(`/details/${id}`, { state: id });
     } else {
-      toast.error("You Need To sign in");
+      toast.error("Please log in to see details");
     }
     // console.log(id);
     // navigate(`details/${id}`, { state: id })
@@ -24,7 +23,7 @@ const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
     // <CardWrapper onClick={() => navigate(`/details/${id}`, { state: id })}>
     <CardWrapper onClick={() => handleDetail(id)}>
       <Card>
-        <img src={IMG_URL + poster_path} alt="" />
+        <img src={poster_path ? IMG_URL + poster_path : defaultPoster} alt="" />
         <Desc>
           <h2>Overview</h2>
           <p>{overview} </p>

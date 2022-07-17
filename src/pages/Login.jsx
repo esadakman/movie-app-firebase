@@ -14,9 +14,9 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
-import Flex from "../components/globalStyles/Flex";
-import { auth, login } from "../auth/firebase";
-import { useNavigate } from "react-router-dom";
+import Flex, { ButtonStyleCard } from "../components/globalStyles/Flex";
+import { login } from "../auth/firebase";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -107,15 +107,14 @@ const Login = () => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
+            <ButtonStyleCard
               type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
               className={classes.submit}
+              style={{ width: "100%", borderRadius: "1px" }}
+              // className={classes.submit}
             >
               Sign In
-            </Button>
+            </ButtonStyleCard>
             <Flex style={{ marginBottom: "1rem" }}>
               <GoogleButton
                 // label=""
@@ -131,7 +130,7 @@ const Login = () => {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/register" variant="body2">
+                <Link to="/register" variant="body2" component={RouterLink}>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

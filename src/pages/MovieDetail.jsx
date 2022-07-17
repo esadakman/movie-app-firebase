@@ -10,14 +10,14 @@ import MovieCard, {
 } from "./styles/MovieDetail.styled";
 import ModalYoutube from "../components/ModalYoutube";
 import theatre from "../assets/theatre.jpg";
+import { useAuthContext } from "../context/AuthContext";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
 // !====================
 const MovieDetail = () => {
   const { id } = useParams();
-  // const ids = useLocation();
   const [movieDatas, setMovieDatas] = useState();
   const [trailer, setTrailer] = useState();
+  const { API_KEY } = useAuthContext();
   //
   const IMG_URL = "https://image.tmdb.org/t/p/w1280";
   const movieDetailUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
@@ -41,8 +41,6 @@ const MovieDetail = () => {
       console.log(error);
     }
   };
-
-  // console.log(trailer);
 
   useEffect(() => {
     getMovieDetail();
@@ -84,8 +82,6 @@ const MovieDetail = () => {
               movieDatas?.backdrop_path
                 ? IMG_URL + movieDatas?.backdrop_path
                 : theatre
-
-              // IMG_URL + movieDatas?.backdrop_path
             }
             alt="poster"
           ></img>
