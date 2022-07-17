@@ -13,7 +13,7 @@ import GoogleButton from "react-google-button";
 import Flex from "../components/globalStyles/Flex";
 // import { UserAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { register } from "../config/firebase";
+import { register } from "../auth/firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
