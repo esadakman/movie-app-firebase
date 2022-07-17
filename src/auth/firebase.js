@@ -74,7 +74,7 @@ export const login = async (email, password, navigate) => {
 export const logout = async () => {
   try {
     await signOut(auth);
-    toast.success('"logged out successfully"');
+    toast.success("Logged out successfully");
     return true;
   } catch (error) {
     toast.error(error.message);
@@ -86,8 +86,8 @@ const provider = new GoogleAuthProvider();
 export const GoogleRegister = (navigate) => {
   signInWithPopup(auth, provider)
     .then((result) => {
-      // The signed-in user info.
       const user = result.user;
+      toast.success("Logged In");
       navigate("/");
       return user;
     })
