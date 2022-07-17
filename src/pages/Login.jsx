@@ -15,8 +15,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
 import Flex, { ButtonStyleCard } from "../components/globalStyles/Flex";
-import { login } from "../auth/firebase";
+import { GoogleRegister, login } from "../auth/firebase";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,18 +51,18 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
   const classes = useStyles();
   // const [user, setUser] = useState(null);
-
-  // const login = () => {
-  //   auth.signInWithPopup(provider).catch((error) => alert(error.message));
-  // };
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const user = await login(email, password, navigate);
-    // console.log(user);
+    // const user = await login(email, password, navigate);
+    if (email && password) {
+      await login(email, password, navigate);
+    } else {
+      toast.error("Please fill out all fiels.");
+    }
   };
 
   return (
@@ -119,7 +120,7 @@ const Login = () => {
               <GoogleButton
                 // label=""
                 onClick={() => {
-                  console.log("Google button clicked");
+                  GoogleRegister(navigate);
                 }}
               />
             </Flex>

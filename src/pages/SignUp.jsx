@@ -11,10 +11,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
 import Flex, { ButtonStyleCard } from "../components/globalStyles/Flex";
-// import { UserAuth } from "../context/AuthContext";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { GoogleRegister, register } from "../auth/firebase";
-import { signInWithPopup } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,11 +58,14 @@ const SignUp = () => {
   const navigate = useNavigate();
   //
   const handleSignUp = async (e) => {
-    const displayName = `${firstName} ${lastName}`;
     e.preventDefault();
-    // const user = await register(email, password, displayName, navigate);
-    const user = register(email, password, displayName, navigate);
-    console.log(user);
+    const displayName = `${firstName} ${lastName}`;
+    if (email && password && firstName && lastName) {
+      await register(email, password, displayName, navigate);
+    } else {
+      toast.error("Please fill out all fiels.");
+    }
+    // const user = register(email, password, displayName, navigate);
   };
   return (
     <Grid container component="main" className={classes.root}>
@@ -135,16 +137,18 @@ const SignUp = () => {
               </Grid>
             </Grid>
             <ButtonStyleCard
+              // {/* <Button */}
               // type="submit"
               // fullWidth
-              // variant="contained"
-              // color="primary"
+              variant="contained"
+              color="primary"
               className={classes.submit}
               type="submit"
               style={{ width: "100%", borderRadius: "1px" }}
               // className={classes.submit}
             >
               Sign Up
+              {/* </Button> */}
             </ButtonStyleCard>
             <Flex style={{ marginBottom: "1rem" }}>
               <GoogleButton

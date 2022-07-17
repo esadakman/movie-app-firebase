@@ -33,25 +33,24 @@ export const register = async (email, password, displayName, navigate) => {
       email,
       password
     );
-    // await updateProfile(auth.currentUser, { displayName: displayName });
+    await updateProfile(auth.currentUser, { displayName: displayName });
     navigate("/");
     toast.success("Signed Up");
     return user;
   } catch (error) {
-    toast.error(error.message);
+    if (error.code === "auth/email-already-in-use") {
+      toast.error("The email address is already in use");
+    } else if (
+      error.code === "auth/invalid-email" ||
+      error.code === "auth/missing-email"
+    ) {
+      toast.error("The email address is not valid.");
+    } else if (error.code === "auth/weak-password") {
+      toast.error("Password should be at least 6 characters");
+    } else {
+      toast.error(error.message);
+    }
   }
-};
-
-const provider = new GoogleAuthProvider();
-
-export const GoogleRegister = () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // The signed-in user info.
-      const user = result.user;
-      return user;
-    })
-    .catch((error) => toast.error(error.message));
 };
 
 export const login = async (email, password, navigate) => {
@@ -61,7 +60,14 @@ export const login = async (email, password, navigate) => {
     navigate("/");
     return user;
   } catch (error) {
-    toast.error(error.message);
+    if (
+      error.code === "auth/wrong-password" ||
+      error.code === "auth/invalid-email"
+    ) {
+      toast.error("Your email or password is incorrect. \nPlease Try Again");
+    } else {
+      toast.error(error.message);
+    }
   }
 };
 
@@ -75,14 +81,24 @@ export const logout = async () => {
   }
 };
 
-// signInWithPopup(auth, provider)
-//   .then((result) => {
-//     // The signed-in user info.
-//     const user = result.user;
-//   })
-//   .catch((error) => {
-//     // Handle Errors here.
-//     console.log(error);
-//   });
+const provider = new GoogleAuthProvider();
+
+export const GoogleRegister = (navigate) => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // The signed-in user info.
+      const user = result.user;
+      navigate("/");
+      return user;
+    })
+    .catch((error) => {
+      if (error.code === "auth/popup-closed-by-user") {
+        console.log("Popup closed by user");
+      } else {
+        toast.error(error.message);
+      }
+    });
+};
 
 export default app;
+// auth/popup-closed-by-user
