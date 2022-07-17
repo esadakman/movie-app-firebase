@@ -15,7 +15,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
 import Flex from "../components/globalStyles/Flex";
-// import { login } from "../auth/firebase";
+import { login } from "../auth/firebase";
 import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -60,8 +60,8 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    //   const user = await login(email, password, navigate);
-    //   console.log(user);
+    const user = await login(email, password, navigate);
+    console.log(user);
   };
 
   return (

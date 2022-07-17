@@ -7,6 +7,7 @@ import MovieCard, {
   MovieDesc,
   MovieHeader,
 } from "./styles/MovieDetail.styled";
+import ModalYoutube from "../components/ModalYoutube";
 const API_KEY = process.env.REACT_APP_API_KEY;
 const MovieDetail = () => {
   const { id } = useParams();
@@ -30,12 +31,12 @@ const MovieDetail = () => {
     try {
       const { data } = await axios.get(videoUrl);
       // console.log(data);
-      setTrailer(data.results[0]);
+      setTrailer(data.results[0].key);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(trailer);
+  // console.log(trailer);
   //
   useEffect(() => {
     getMovieDetail();
@@ -67,6 +68,7 @@ const MovieDetail = () => {
           <img src={IMG_URL + movieDatas?.backdrop_path} alt=""></img>
         </Blur>
       </MovieCard>
+      <ModalYoutube trailerKey={trailer} />
       {/* </Flex> */}
     </div>
   );

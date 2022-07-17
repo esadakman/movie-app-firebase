@@ -152,3 +152,28 @@ export const ButtonCard = styled.button`
   //   }
   //
 `;
+
+export const YoutubeDiv = styled.div`
+  /* background-color: #2e2d2db8; */
+  width: 70vw;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s linear;
+  @media (max-width: ${({ theme }) => theme.size.md}) {
+    width: 80vw;
+    height: calc(100vw * 0.35);
+  }
+  & > div {
+    width: 100%;
+    height: calc(90vw * 0.4);
+    @media (max-width: ${({ theme }) => theme.size.md}) {
+      height: calc(100vw * 0.45);
+    }
+    & > iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+`;
