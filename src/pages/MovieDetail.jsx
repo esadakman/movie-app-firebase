@@ -9,9 +9,13 @@ import MovieCard, {
   MovieHeader,
 } from "./styles/MovieDetail.styled";
 import ModalYoutube from "../components/ModalYoutube";
+import theatre from "../assets/theatre.jpg";
+
 const API_KEY = process.env.REACT_APP_API_KEY;
+// !====================
 const MovieDetail = () => {
   const { id } = useParams();
+  // const ids = useLocation();
   const [movieDatas, setMovieDatas] = useState();
   const [trailer, setTrailer] = useState();
   //
@@ -37,13 +41,14 @@ const MovieDetail = () => {
       console.log(error);
     }
   };
+
   // console.log(trailer);
-  //
+
   useEffect(() => {
     getMovieDetail();
     getMovieTrailer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [movieDetailUrl, videoUrl]);
 
   return (
     // <div>
@@ -51,7 +56,14 @@ const MovieDetail = () => {
       <MovieCard>
         <InfoSection>
           <MovieHeader>
-            <img src={IMG_URL + movieDatas?.poster_path} alt="" />
+            <img
+              src={
+                movieDatas?.poster_path
+                  ? IMG_URL + movieDatas?.poster_path
+                  : theatre
+              }
+              alt=""
+            />
             <h3>{movieDatas?.title}</h3>
             <h4>2017, David Ayer</h4>
             <span>{movieDatas?.runtime} min</span>
@@ -67,7 +79,16 @@ const MovieDetail = () => {
           </MovieDesc>
         </InfoSection>
         <Blur>
-          <img src={IMG_URL + movieDatas?.backdrop_path} alt=""></img>
+          <img
+            src={
+              movieDatas?.backdrop_path
+                ? IMG_URL + movieDatas?.backdrop_path
+                : theatre
+
+              // IMG_URL + movieDatas?.backdrop_path
+            }
+            alt="poster"
+          ></img>
         </Blur>
       </MovieCard>
     </MovieContainer>

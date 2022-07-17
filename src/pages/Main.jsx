@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { logout } from "../auth/firebase";
-import { ButtonStyleCard } from "../components/globalStyles/Flex";
+// import { logout } from "../auth/firebase";
 import MovieCard from "../components/MovieCard";
-import { useAuthContext } from "../context/AuthContext";
 import CardArea from "./styles/Main.styled";
 
 const Main = () => {
@@ -26,10 +24,8 @@ const Main = () => {
   }, []);
   // ! AuthContext'te oluşturmuş olduğum hook'umu kullanıyorum
 
-  const { userCheck } = useAuthContext();
   return (
     <>
-      <ButtonStyleCard onClick={logout}>Sign Out</ButtonStyleCard>
       {/* {userCheck ? (
         <CardArea>
           {movies?.map((item) => (

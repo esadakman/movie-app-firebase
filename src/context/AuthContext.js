@@ -9,7 +9,8 @@ export const useAuthContext = () => {
 };
 
 export const AuthContextProvider = ({ children }) => {
-  const [userCheck, setUserCheck] = useState({});
+  const [userCheck, setUserCheck] = useState("");
+  const [movieId, setMovieId] = useState("");
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -21,11 +22,13 @@ export const AuthContextProvider = ({ children }) => {
       }
     });
   }, []);
-  return (
-    <AuthContext.Provider value={{ userCheck, setUserCheck }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  const values = {
+    movieId,
+    setMovieId,
+    userCheck,
+    setUserCheck,
+  };
+  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };
 
 export default AuthContext;
