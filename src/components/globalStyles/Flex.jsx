@@ -176,3 +176,23 @@ export const YoutubeDiv = styled.div`
     }
   }
 `;
+
+export const FormButton = styled.button`
+  background-color: ${({ theme }) => theme.colors.navBgColor};
+  color: white;
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s linear;
+  border: none;
+  text-transform: uppercase;
+  :hover {
+    opacity: 1;
+    box-shadow: 0px 2px 3px #ddd;
+    transform: scale(1.02);
+  }
+`;
+// Text-shadow: 0 0 2px white;

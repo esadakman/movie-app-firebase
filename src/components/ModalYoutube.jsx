@@ -1,8 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import { YoutubeDiv } from "./globalStyles/Flex";
+import { FormButton, YoutubeDiv } from "./globalStyles/Flex";
 
 const style = {
   position: "absolute",
@@ -22,7 +21,9 @@ export default function BasicModal({ trailerKey }) {
   // console.log(trailerKey);
   return (
     <div>
-      <Button onClick={handleOpen}>Watch Trailer</Button>
+      <FormButton onClick={handleOpen} style={{ backgroundColor: "#172e61" }}>
+        Watch Trailer
+      </FormButton>
       {/* <ButtonStyleCard style={{ width: "fit-content" }} onClick={handleOpen}>
         Watch Trailer
       </ButtonStyleCard> */}

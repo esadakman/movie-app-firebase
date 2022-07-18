@@ -14,7 +14,7 @@ import ModalYoutube from "../components/ModalYoutube";
 import theatre from "../assets/theatre.jpg";
 import { useAuthContext } from "../context/AuthContext";
 import loadingGif from "../assets/loading.svg";
-
+import Flex, { FormButton } from "../components/globalStyles/Flex";
 // !====================
 const MovieDetail = () => {
   const { id } = useParams();
@@ -59,65 +59,79 @@ const MovieDetail = () => {
     // <div>
     <MovieContainer>
       {loading ? (
-        <MovieCard>
-          <RateSpan
-            style={{
-              backgroundColor: `${
-                movieDatas?.vote_average >= 8
-                  ? "green"
-                  : movieDatas?.vote_average >= 6
-                  ? "orange"
-                  : movieDatas?.vote_average >= 4
-                  ? "#e8e80fc8"
-                  : "red"
-              }`,
-            }}
+        <Flex style={{ flexDirection: "column", gap: "1rem" }}>
+          <MovieCard>
+            <RateSpan
+              style={{
+                backgroundColor: `${
+                  movieDatas?.vote_average >= 8
+                    ? "green"
+                    : movieDatas?.vote_average >= 6
+                    ? "orange"
+                    : movieDatas?.vote_average >= 4
+                    ? "#e8e80fc8"
+                    : "red"
+                }`,
+              }}
+            >
+              {movieDatas?.vote_average}
+            </RateSpan>
+            <InfoSection>
+              <LeftDiv>
+                <MovieHeader>
+                  <div className="imgContainer">
+                    <img
+                      src={
+                        movieDatas?.poster_path
+                          ? IMG_URL + movieDatas?.poster_path
+                          : theatre
+                      }
+                      alt=""
+                    />
+                  </div>
+                  <div className="textContainer">
+                    <h3>{movieDatas?.title}</h3>
+                    <h4>{movieDatas?.release_date.slice(0, 4)}</h4>
+                    <p className="runTime">{movieDatas?.runtime} min</p>
+                    <p className="genre">{movieDatas?.genres[0].name}</p>
+                  </div>
+                </MovieHeader>
+                <MovieDesc>
+                  <p>{movieDatas?.overview}</p>
+                  <Flex
+                    align
+                    justify
+                    style={{ justifyContent: "center", margin: ".5rem" }}
+                  >
+                    <ModalYoutube trailerKey={trailer} />
+                  </Flex>
+                </MovieDesc>
+              </LeftDiv>
+            </InfoSection>
+            <Blur>
+              <img
+                src={
+                  movieDatas?.backdrop_path
+                    ? IMG_URL + movieDatas?.backdrop_path
+                    : theatre
+                }
+                alt="poster"
+              ></img>
+            </Blur>
+          </MovieCard>
+
+          <FormButton
+            variant="contained"
+            style={{ backgroundColor: "#112756" }}
           >
-            {movieDatas?.vote_average}
-          </RateSpan>
-          <InfoSection>
-            <LeftDiv>
-              <MovieHeader>
-                <div className="imgContainer">
-                  <img
-                    src={
-                      movieDatas?.poster_path
-                        ? IMG_URL + movieDatas?.poster_path
-                        : theatre
-                    }
-                    alt=""
-                  />
-                </div>
-                <div className="textContainer">
-                  <h3>{movieDatas?.title}</h3>
-                  <h4>{movieDatas?.release_date.slice(0, 4)}</h4>
-                  <p className="runTime">{movieDatas?.runtime} min</p>
-                  <p className="genre">{movieDatas?.genres[0].name}</p>
-                </div>
-              </MovieHeader>
-              <MovieDesc>
-                <p>{movieDatas?.overview}</p>
-                <ModalYoutube trailerKey={trailer} />
-              </MovieDesc>
-            </LeftDiv>
-          </InfoSection>
-          <Blur>
-            <img
-              src={
-                movieDatas?.backdrop_path
-                  ? IMG_URL + movieDatas?.backdrop_path
-                  : theatre
-              }
-              alt="poster"
-            ></img>
-          </Blur>
-        </MovieCard>
+            GO BACK
+          </FormButton>
+        </Flex>
       ) : (
         <>
           <img src={loadingGif} alt=""></img>
         </>
       )}
-      <button>asdsd</button>
     </MovieContainer>
 
     // </div>

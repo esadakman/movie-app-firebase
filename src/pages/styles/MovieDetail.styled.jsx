@@ -5,9 +5,8 @@ export const MovieContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 85vh;
-  border: 1px red solid;
   margin-bottom: 4rem;
 `;
 
@@ -27,13 +26,16 @@ const MovieCard = styled.div`
     transition: all 0.4s;
   }
   @media (max-width: ${({ theme }) => theme.size.mdl}) {
-    width: 80%;
+    /* width: 95%; */
+    height: auto;
   }
   @media (max-width: ${({ theme }) => theme.size.md}) {
-    height: 80%;
+    /* height: 80%; */
+    /* width: fit-content; */
   }
   @media (max-width: ${({ theme }) => theme.size.xs}) {
     height: auto;
+    width: 90%;
   }
 `;
 
@@ -45,12 +47,18 @@ export const RateSpan = styled.span`
   padding: 5px;
   border-radius: 0.5rem;
   color: #fff;
+  @media (max-width: ${({ theme }) => theme.size.xs}) {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
 `;
 
 export const LeftDiv = styled.div`
   width: 40rem;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   height: 100%;
+  padding: 1rem;
+
   transition: all 0.2s;
   @media (max-width: ${({ theme }) => theme.size.lg}) {
     width: 30rem;
@@ -64,7 +72,7 @@ export const LeftDiv = styled.div`
 `;
 
 export const InfoSection = styled.div`
-  border: solid 1px red;
+  /* border: solid 1px red; */
   position: relative;
   width: 100%;
   height: 100%;
@@ -72,7 +80,7 @@ export const InfoSection = styled.div`
   z-index: 2;
   border-radius: 10px;
   @media (min-width: ${({ theme }) => theme.size.md}) {
-    background: linear-gradient(to right, #e5e6e6 50%, transparent 100%);
+    background: linear-gradient(to right, #e5e6e6 40%, transparent 100%);
   }
   @media (max-width: ${({ theme }) => theme.size.mdl}) {
     background: linear-gradient(to top, #e5e6e6 40%, transparent 100%);
@@ -82,10 +90,15 @@ export const InfoSection = styled.div`
 
 export const MovieHeader = styled.div`
   position: relative;
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
   height: 40%;
   display: flex;
   width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.size.xs}) {
+    padding-bottom: 0.5rem;
+    height: fit-content;
+  }
   & > div.imgContainer {
     & > img {
       position: relative;
@@ -93,9 +106,9 @@ export const MovieHeader = styled.div`
       height: 8rem;
       box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
     }
-    @media (max-width: ${({ theme }) => theme.size.xs}) {
-      /* display: none; */
-    }
+    /* @media (max-width: ${({ theme }) => theme.size.xs}) {
+      height: fit-content;
+    } */
   }
   & > div.textContainer {
     display: flex;
@@ -103,10 +116,13 @@ export const MovieHeader = styled.div`
     /* border: 1px solid red; */
     width: 100%;
     height: 8rem;
+    gap: 0.5rem;
+
     @media (max-width: ${({ theme }) => theme.size.sm}) {
       font-weight: bolder;
       /* background-color: #24222278; */
       padding: 5px;
+      gap: 0.3rem;
     }
     & > h3 {
       color: #000000;
@@ -137,24 +153,25 @@ export const MovieDesc = styled.div`
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
-  margin-left: 25px;
-  margin-top: 1.5rem;
+  /* margin: 1.5rem; */
+  margin-top: 1rem;
   height: 50%;
-  width: 92%;
-  @media (max-width: ${({ theme }) => theme.size.sm}) {
-    margin-top: 5px;
-    width: 85%;
-    height: 55%;
+  min-height: 11rem;
+  max-height: 15rem;
+  width: 80%;
+  @media (max-width: ${({ theme }) => theme.size.md}) {
+    margin: 0.5rem;
+    width: fit-content;
+    height: fit-content;
+    max-height: 18rem;
   }
   & > p {
     overflow: auto;
     color: #000;
     border: 1px solid black;
     height: 90%;
+    min-height: 8rem;
     width: 100%;
-  }
-  & > button {
-    /* width: 5rem; */
   }
 `;
 

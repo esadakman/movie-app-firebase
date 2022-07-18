@@ -1,3 +1,6 @@
+// import { createTheme } from "@mui/material/styles";
+// import { indigo, cyan } from "@mui/material/colors";
+
 const theme = {
   colors: {
     navBgColor: "#050f24",
@@ -27,4 +30,13 @@ const theme = {
     xxlg: "1400px",
   },
 };
+
+// export const muiTheme = createTheme({
+//   palette: {
+//     secondary: {
+//       main: indigo[900],
+//     },
+//   },
+// });
+
 export default theme;
