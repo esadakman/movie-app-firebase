@@ -9,6 +9,7 @@ import MovieCard, {
   MovieHeader,
   RateSpan,
   LeftDiv,
+  YoutubeBtn,
 } from "./styles/MovieDetail.styled";
 import ModalYoutube from "../components/ModalYoutube";
 import theatre from "../assets/theatre.jpg";
@@ -44,7 +45,7 @@ const MovieDetail = () => {
     try {
       const { data } = await axios.get(videoUrl);
       // console.log(data);
-      setTrailer(data.results[0].key);
+      setTrailer(data.results[0]?.key);
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +57,7 @@ const MovieDetail = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieDetailUrl, videoUrl]);
   const openInNewTab = (url) => {
-    // 👇️ IMDb linkine tıklanıldığında yenis sekmede açmak için aşağıdaki func. kullandım
+    // 👇️ IMDb linkine tıklanıldığında yeni sekmede açmak için aşağıdaki func. kullandım
     window.open(url, "_blank", "noopener,noreferrer");
   };
   return (
@@ -106,31 +107,38 @@ const MovieDetail = () => {
                   <div className="textContainer">
                     <h3>
                       {movieDatas?.title}
-                      {"\n"}
-                      {movieDatas?.release_date.slice(0, 4)}
+                      <br />
+                      <span>{movieDatas?.release_date.slice(0, 4)}</span>
                     </h3>
-                    {/* <h4>{movieDatas?.release_date.slice(0, 4)}</h4> */}
-                    <p className="runTime">{movieDatas?.runtime} min</p>
-                    {/* <p className="genre">{movieDatas?.genres[0].name}</p> */}
+
                     <p className="genre">
                       {
-                        movieDatas?.genres.map((type) => type.name).toString()
+                        movieDatas?.genres
+                          .map((type) => type.name)
+                          .slice(0, 2)
+                          .toString()
                         // .map((type) => type.name + ", ")
                         // .split(",")
                         // .slice(0, -2)
+                        // movieDatas?.genres.map((type, index) => {
+                        //   return <span key={index}>{type.name}</span>;
+                        // })
                       }
+
+                      <br />
+                      <span>{movieDatas?.runtime} min</span>
                     </p>
                   </div>
                 </MovieHeader>
                 <MovieDesc>
-                  <p>{movieDatas?.overview}</p>
-                  <Flex
-                    align
-                    justify
-                    style={{ justifyContent: "center", margin: ".5rem" }}
-                  >
+                  <p>
+                    {movieDatas?.overview
+                      ? movieDatas?.overview
+                      : "Information not found"}
+                  </p>
+                  <YoutubeBtn>
                     <ModalYoutube trailerKey={trailer} />
-                  </Flex>
+                  </YoutubeBtn>
                 </MovieDesc>
               </LeftDiv>
             </InfoSection>

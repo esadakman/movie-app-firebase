@@ -123,6 +123,7 @@ export const MovieHeader = styled.div`
       margin-right: 20px;
       height: 100%;
       max-height: 10rem;
+      max-width: 8rem;
       box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
       /* @media (max-width: ${({ theme }) => theme.size.md}) {
         height: 8rem;
@@ -135,43 +136,44 @@ export const MovieHeader = styled.div`
   & > div.textContainer {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid red; */
     width: 100%;
-    height: 8rem;
+    height: 100%;
+    max-height: 10rem;
+    min-width: 10rem;
     gap: 0.5rem;
-    justify-content: space-between;
-
-    @media (max-width: ${({ theme }) => theme.size.sm}) {
+    @media (max-width: ${({ theme }) => theme.size.md}) {
       font-weight: bolder;
-      /* background-color: #24222278; */
-      padding: 5px;
-      gap: 0.3rem;
+      gap: 0rem;
     }
     & > h3 {
       color: #000000;
       text-shadow: 0 0 2px white;
-    }
-    & > h4 {
-      color: #070707;
-      text-shadow: 0 0 2px white;
-    }
-    & > p.runTime {
-      margin-top: 1rem;
-      @media (max-width: ${({ theme }) => theme.size.sm}) {
-        margin-top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      @media (max-width: ${({ theme }) => theme.size.md}) {
+        gap: 0;
       }
-      color: #171717;
-      text-shadow: 0 0 2px white;
     }
+
     & > p.genre {
       color: #000;
       text-shadow: 0 0 2px white;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      gap: 0.6rem;
+      @media (max-width: ${({ theme }) => theme.size.md}) {
+        gap: 0.1rem;
+        padding-top: 5px;
+
+        border-radius: 5px;
+      }
     }
   }
 `;
 
 export const MovieDesc = styled.div`
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   /* margin: 1.5rem; */
@@ -184,13 +186,16 @@ export const MovieDesc = styled.div`
     /* margin: 0.5rem; */
     margin-left: 0;
     width: fit-content;
+    min-width: 20rem;
     height: fit-content;
     max-height: 18rem;
+  }
+  @media (max-width: ${({ theme }) => theme.size.md}) {
+    min-width: 16rem;
   }
   & > p {
     overflow: auto;
     color: #000;
-    border: 1px solid black;
     height: 90%;
     min-height: 8rem;
     width: 100%;
@@ -221,6 +226,18 @@ export const Blur = styled.div`
       min-width: 30rem;
       background-position: 50% 50% !important;
     }
+  }
+`;
+
+export const YoutubeBtn = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  /* padding: 0.5rem; */
+  padding: 1rem 0;
+  align-items: center;
+  @media (max-width: ${({ theme }) => theme.size.sm}) {
+    justify-content: center;
+    padding-bottom: 0;
   }
 `;
 
