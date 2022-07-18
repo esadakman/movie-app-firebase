@@ -101,4 +101,3 @@ export const GoogleRegister = (navigate) => {
 };
 
 export default app;
-// auth/popup-closed-by-user

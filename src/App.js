@@ -8,7 +8,24 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
-        <Toaster position="top-right" />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            // Define default options
+
+            // style: {
+            //   marginTop: "2.5rem",
+            // },
+            error: {
+              icon: "❗",
+            },
+            success: {
+              style: {
+                fontSize: "1rem",
+              },
+            },
+          }}
+        />
         <Router />
       </div>
     </ThemeProvider>

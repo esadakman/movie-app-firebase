@@ -35,9 +35,10 @@ export default function BasicModal({ trailerKey }) {
           <YoutubeDiv>
             <div>
               <iframe
-                src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1`}
+                // ? https://developers.google.com/youtube/player_parameters
+                // ? youtube IFrame Player API dökümanını inceleyerek trailerKey'lerimi nasıl kullanacağımı öğrendim
+                src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1`}
                 frameBorder="0"
-                // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="Embedded youtube"
               />

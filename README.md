@@ -1,22 +1,26 @@
-<p>Clarusway<img align="right"
-  src="https://secure.meetupstatic.com/photos/event/3/1/b/9/600_488352729.jpeg"  width="15px"></p>
+# Movie App
 
-# Project-005 : Movie App (RC-05)
+## Objective
+
+Build a Movie App using ReactJS.
 
 ## Description
 
-Project aims to create a Movie App.
+- Project aims to create a Movie App.
+- In this project, I designed a Movie App with many features. I provided the movie information with the api I got from the `https://www.themoviedb.org/documentation/api` site. And I used Firebase for authentication.
+- The user can log in and register with both their email address and their Google account.
+- Access to movie details is restricted for visitors who do not log in.
 
-## Problem Statement
+## Project Link
 
-- We are adding a new project to our portfolios. So you and your colleagues have started to work on the project.
+#### You can reach my project from [here](https://firebase-movie-app-tmdb.netlify.app/) 👈
 
 ## Project Skeleton
 
 ```
-005 - Movie App (folder)
+Movie App (folder)
 |
-|----readme.md         # Given to the students (Definition of the project)
+|----readme.md
 SOLUTION
 ├── public
 │     └── index.html
@@ -24,66 +28,70 @@ SOLUTION
 │    ├── auth
 │    │     └── firebase.js
 │    ├── components
-│    │     ├── MovieCard.js
-│    │     └── Navbar.js
+│    │       ├── globalStyles
+│    │       │     ├── Flex.jsx
+│    │       |     ├── Global.styled.jsx
+│    │       │     ├── Navbar.styled.jsx
+│    │       │     └── theme.jsx
+│    │       ├── Footer.jsx
+│    │       ├── ModalYoutube.jsx
+│    │       ├── MovieCard.jsx
+│    │       └── Navbar.jsx
 │    ├── context
 │    │     └── AuthContext.js
 │    ├── pages
-│    │     ├── Login.js
-│    │     ├── Register.js
-│    │     ├── Main.js
-│    │     └── MovieDetail.js
+│    │       ├── styles
+│    │       │     ├── Main.styled.jsx
+│    │       │     ├── MovieDetail.styled.jsx
+│    │       │     └── NotFound.styled.jsx
+│    │       ├── Login.jsx
+│    │       ├── Main.jsx
+│    │       ├── MovieDetail.jsx
+│    │       ├── NotFound.jsx
+│    │       └── Register.jsx
 │    ├── router
 │    │     └── Router.js
 │    ├── App.js
 │    ├── App.css
-│    ├── index.js
-│    └── index.css
+│    └── index.js
 ├── package.json
 ├── .env
 └── yarn.lock
 ```
 
-## Expected Outcome
-
-![Project 005 Snapshot](movie-app.gif)
-
-## Objective
-
-Build a Movie App using ReactJS.
-
 ### At the end of the project, following topics are to be covered;
 
 - HTML
-
 - CSS
-
 - JS
-
 - ReactJS
+- Axios
+- Firebase
+- Styled Components
+- Material-UI
 
-### At the end of the project, students will be able to;
+To run this project;
 
-- improve coding skills within HTML & CSS & JS & ReactJS.
+- Signup `https://firebase.google.com/` and create new app in firebase.
+- Use `https://firebase.google.com/docs/auth/web/start` and create `Authentication` operations.
+- Signup `https://www.themoviedb.org/documentation/api` and get API key for getting data from `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`, for searching movies `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=` and for movie details `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`.
+- Create a .env file and set your
+  -- REACT_APP_FIREBASE_API_KEY,
+  -- REACT_APP_FIREBASE_AUTH_DOMAIN,
+  -- REACT_APP_FIREBASE_PROJECT_ID,
+  -- REACT_APP_FIREBASE_STORAGE_BUCKET,
+  -- REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  -- REACT_APP_FIREBASE_APP_ID and
+  -- REACT_APP_MEASUREMENT_ID for firebase access and
+  -- REACT_APP_API_KEY for TMDB API access:
 
-- use git commands (push, pull, commit, add etc.) and Github as Version Control System.
+- After these you can run the project as usual =>
 
-## Steps to Solution
+```
+$ git clone https://github.com/esadakman/movie-app-firebase.git
+$ cd ../movie-app-firebase
+$ npm install / yarn
+$ npm start / yarn start
+```
 
-- Step 1 : Create React App using `npx create-react-app movie-app`
-
-- Step 2 : Signup `https://firebase.google.com/` and create new app in firebase.
-
-- Step 3 : Use `https://firebase.google.com/docs/auth/web/start` and create `Authentication` operations.
-
-- Step 4 : Signup `https://www.themoviedb.org/documentation/api` and get API key for getting data from `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`, for searching movies `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=` and for movie details `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`.
-
-- Step 5: You can use css frameworks like Bootstrap, Semantic UI, Material UI.
-
-- Step 6: Add project gif to your project and README.md file.
-
-## Notes
-
-- You can add additional functionalities to your app.
-
-**<p align="center">&#9786; Happy Coding &#9997;</p>**
+### Preview of the Project

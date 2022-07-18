@@ -20,6 +20,7 @@ const Main = () => {
   const [search, setSearch] = useState("");
   const [movies, setMovies] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   // ! API url's
   const url = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
   const seachUrl = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=`;
@@ -42,7 +43,6 @@ const Main = () => {
     // getMovieSearch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setMovies]);
-  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();

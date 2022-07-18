@@ -61,7 +61,7 @@ const Login = () => {
     if (email && password) {
       await login(email, password, navigate);
     } else {
-      toast.error("Please fill out all fiels.");
+      toast.error("Please fill out all fields.");
     }
   };
 
@@ -104,10 +104,10 @@ const Login = () => {
               autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <FormButton
               type="submit"
               className={classes.submit}
@@ -124,12 +124,12 @@ const Login = () => {
                 }}
               />
             </Flex>
-            <Grid container>
-              <Grid item xs>
+            <Grid container justifyContent="flex-end">
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid>
+              </Grid> */}
               <Grid item>
                 <Link to="/register" variant="body2" component={RouterLink}>
                   {"Don't have an account? Sign Up"}

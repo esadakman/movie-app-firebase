@@ -8,21 +8,19 @@ const IMG_URL = "https://image.tmdb.org/t/p/w1280";
 const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
   const navigate = useNavigate();
   const { userCheck } = useAuthContext();
-  // const { setMovieId, movieId } = useAuthContext();
 
   const handleDetail = (id) => {
     if (userCheck) {
       navigate(`/details/${id}`, { state: id });
     } else {
       toast.error("Please log in to see details");
+      navigate("/login");
     }
-    // console.log(id);
-    // navigate(`details/${id}`, { state: id })
   };
   return (
     // <CardWrapper onClick={() => navigate(`/details/${id}`, { state: id })}>
 
-    <CardWrapper onClick={() => handleDetail(id)}>
+    <CardWrapper onClick={() => handleDetail(id)} title="Click for details">
       <Card>
         <img src={poster_path ? IMG_URL + poster_path : defaultPoster} alt="" />
         <Desc>

@@ -58,7 +58,15 @@ const MovieDetail = () => {
   }, [movieDetailUrl, videoUrl]);
   const openInNewTab = (url) => {
     // 👇️ IMDb linkine tıklanıldığında yeni sekmede açmak için aşağıdaki func. kullandım
-    window.open(url, "_blank", "noopener,noreferrer");
+    if (
+      window.confirm(
+        "You're now leaving this website. Would you like to continue ?"
+      )
+    ) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } else {
+      console.log("Keep Surfing the Movie App");
+    }
   };
   return (
     // <div>

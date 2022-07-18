@@ -1,17 +1,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../auth/firebase";
 const AuthContext = createContext({});
+// ? API_KEY'i birden fazla kullandığım için vede useContext kullanımımı geliştirmek için buraya ekledim
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-// ? consume function
+// ? consume function (kendi hook'umu oluşturarak useContext yerine kullandım)
 export const useAuthContext = () => {
   return useContext(AuthContext);
 };
 
 export const AuthContextProvider = ({ children }) => {
   const [userCheck, setUserCheck] = useState("");
-  //
-
+  // ? Kullanıcının durumunu takip etmek için fonksiyonumu buraya yazdım ve ihtiyaç durumunda useContext sayesinde çağırdım
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -30,19 +30,3 @@ export const AuthContextProvider = ({ children }) => {
 };
 
 export default AuthContext;
-
-// const [loading, setLoading] = useState(false);
-// const getData = async (apiType) => {
-//   setLoading(false);
-//   try {
-//     // const { data } = await axios.get(apiType);
-//     // setMovies(data.results);
-//     const data = await axios.get(apiType).then((res) => {
-//       console.log(res);
-//       setMovies(res.data.results);
-//     });
-//     setLoading(true);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };

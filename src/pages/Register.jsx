@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = () => {
+const Register = () => {
   const classes = useStyles();
   // const [user, setUser] = useState(null);
   const [firstName, setFirstName] = useState("");
@@ -168,7 +168,7 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Register;
 
 // const MadeWithLove = () => (
 //   <Typography variant="body2" color="textSecondary" align="center">
