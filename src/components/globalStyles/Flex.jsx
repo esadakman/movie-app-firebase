@@ -41,6 +41,7 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  cursor: pointer;
 `;
 
 export const Card = styled.div`
@@ -49,7 +50,7 @@ export const Card = styled.div`
   background: #fff;
   border: 2px solid #fff;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
+
   transition: all 0.5s cubic-bezier(0.8, 0.5, 0.2, 1.4);
   overflow: hidden;
   position: relative;
@@ -93,15 +94,13 @@ export const Desc = styled.div`
     color: ${({ theme }) => theme.colors.navBgColor};
     letter-spacing: 1px;
     margin: 10px 0;
-
     font-weight: 400;
   }
   & > p {
     overflow: auto;
-    /* text-indent: px; */
     padding-right: 8px;
     line-height: 24px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: justify;
     height: 85%;
   }
@@ -133,24 +132,6 @@ export const TitleCard = styled.div`
     color: white;
     background-color: ${({ theme }) => theme.colors.success};
   }
-`;
-
-export const ButtonCard = styled.button`
-  //   width: fit-content;
-  //   height: 40px;
-  //   cursor: pointer;
-  //   border-style: none;
-  //   background-color: #ff3838;
-  //   color: #fff;
-  //   font-size: 15px;
-  //   outline: none;
-  //   box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4);
-  //   transition: all 0.5s ease-in-out;
-  //   :hover {
-  //     transform: scale(0.95) translateX(-5px);
-  //     transition: all 0.5s ease-in-out;
-  //   }
-  //
 `;
 
 export const YoutubeDiv = styled.div`

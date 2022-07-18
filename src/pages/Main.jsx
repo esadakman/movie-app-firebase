@@ -54,7 +54,7 @@ const Main = () => {
   };
 
   return (
-    <>
+    <div style={{ marginBottom: "4rem" }}>
       <SearchBarDiv>
         <FormStyled onSubmit={handleSearch}>
           <InputStyled
@@ -96,7 +96,7 @@ const Main = () => {
           <img src={loadingGif} alt="loading gif"></img>
         </Flex>
       )}
-    </>
+    </div>
   );
 };
 

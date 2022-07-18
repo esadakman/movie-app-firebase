@@ -21,6 +21,7 @@ const MovieCard = ({ poster_path, title, overview, vote_average, id }) => {
   };
   return (
     // <CardWrapper onClick={() => navigate(`/details/${id}`, { state: id })}>
+
     <CardWrapper onClick={() => handleDetail(id)}>
       <Card>
         <img src={poster_path ? IMG_URL + poster_path : defaultPoster} alt="" />
