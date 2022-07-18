@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MovieCard, {
   Blur,
   InfoSection,
@@ -22,7 +22,7 @@ const MovieDetail = () => {
   const [trailer, setTrailer] = useState();
   const { API_KEY } = useAuthContext();
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   //
   const IMG_URL = "https://image.tmdb.org/t/p/w1280";
   const movieDetailUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}`;
@@ -31,8 +31,9 @@ const MovieDetail = () => {
   const getMovieDetail = async () => {
     try {
       const { data } = await axios.get(movieDetailUrl);
-      console.log(data);
+      // console.log(data);
       setMovieDatas(data);
+      // console.log(typeof movieDatas?.genres);
 
       setLoading(true);
     } catch (error) {
@@ -54,7 +55,10 @@ const MovieDetail = () => {
     getMovieTrailer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieDetailUrl, videoUrl]);
-
+  const openInNewTab = (url) => {
+    // 👇️ IMDb linkine tıklanıldığında yenis sekmede açmak için aşağıdaki func. kullandım
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
   return (
     // <div>
     <MovieContainer>
@@ -62,19 +66,29 @@ const MovieDetail = () => {
         <Flex style={{ flexDirection: "column", gap: "1rem" }}>
           <MovieCard>
             <RateSpan
-              style={{
-                backgroundColor: `${
-                  movieDatas?.vote_average >= 8
-                    ? "green"
-                    : movieDatas?.vote_average >= 6
-                    ? "orange"
-                    : movieDatas?.vote_average >= 4
-                    ? "#e8e80fc8"
-                    : "red"
-                }`,
-              }}
+              title="Visit IMDb Page"
+              onClick={() =>
+                openInNewTab(
+                  `https://www.imdb.com/title/${movieDatas?.imdb_id}`
+                )
+              }
             >
-              {movieDatas?.vote_average}
+              <p>IMDb</p>
+              <span
+                style={{
+                  backgroundColor: `${
+                    movieDatas?.vote_average >= 8
+                      ? "green"
+                      : movieDatas?.vote_average >= 6
+                      ? "orange"
+                      : movieDatas?.vote_average >= 4
+                      ? "#e8e80fc8"
+                      : "red"
+                  }`,
+                }}
+              >
+                {movieDatas?.vote_average}
+              </span>
             </RateSpan>
             <InfoSection>
               <LeftDiv>
@@ -90,10 +104,22 @@ const MovieDetail = () => {
                     />
                   </div>
                   <div className="textContainer">
-                    <h3>{movieDatas?.title}</h3>
-                    <h4>{movieDatas?.release_date.slice(0, 4)}</h4>
+                    <h3>
+                      {movieDatas?.title}
+                      {"\n"}
+                      {movieDatas?.release_date.slice(0, 4)}
+                    </h3>
+                    {/* <h4>{movieDatas?.release_date.slice(0, 4)}</h4> */}
                     <p className="runTime">{movieDatas?.runtime} min</p>
-                    <p className="genre">{movieDatas?.genres[0].name}</p>
+                    {/* <p className="genre">{movieDatas?.genres[0].name}</p> */}
+                    <p className="genre">
+                      {
+                        movieDatas?.genres.map((type) => type.name).toString()
+                        // .map((type) => type.name + ", ")
+                        // .split(",")
+                        // .slice(0, -2)
+                      }
+                    </p>
                   </div>
                 </MovieHeader>
                 <MovieDesc>
@@ -120,11 +146,8 @@ const MovieDetail = () => {
             </Blur>
           </MovieCard>
 
-          <FormButton
-            variant="contained"
-            style={{ backgroundColor: "#112756" }}
-          >
-            GO BACK
+          <FormButton variant="contained" onClick={() => navigate(-1)}>
+            Go Back
           </FormButton>
         </Flex>
       ) : (

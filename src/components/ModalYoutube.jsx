@@ -21,9 +21,7 @@ export default function BasicModal({ trailerKey }) {
   // console.log(trailerKey);
   return (
     <div>
-      <FormButton onClick={handleOpen} style={{ backgroundColor: "#172e61" }}>
-        Watch Trailer
-      </FormButton>
+      <FormButton onClick={handleOpen}>Watch Trailer</FormButton>
       {/* <ButtonStyleCard style={{ width: "fit-content" }} onClick={handleOpen}>
         Watch Trailer
       </ButtonStyleCard> */}

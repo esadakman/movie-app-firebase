@@ -14,7 +14,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
-import Flex, { ButtonStyleCard } from "../components/globalStyles/Flex";
+import Flex, { FormButton } from "../components/globalStyles/Flex";
 import { GoogleRegister, login } from "../auth/firebase";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -108,14 +108,14 @@ const Login = () => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <ButtonStyleCard
+            <FormButton
               type="submit"
               className={classes.submit}
               style={{ width: "100%", borderRadius: "1px" }}
               // className={classes.submit}
             >
               Sign In
-            </ButtonStyleCard>
+            </FormButton>
             <Flex style={{ marginBottom: "1rem" }}>
               <GoogleButton
                 // label=""

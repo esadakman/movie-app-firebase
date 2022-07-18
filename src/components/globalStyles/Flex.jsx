@@ -178,21 +178,24 @@ export const YoutubeDiv = styled.div`
 `;
 
 export const FormButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.navBgColor};
+  background-color: ${({ theme }) => theme.colors.btnColor};
   color: white;
-  padding: 0.5rem 0.7rem;
+  padding: 0.5rem 0.8rem;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 600;
   letter-spacing: 1px;
   cursor: pointer;
   opacity: 0.9;
   transition: all 0.3s linear;
   border: none;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
+  font-size: 1.1rem;
+
   :hover {
     opacity: 1;
     box-shadow: 0px 2px 3px #ddd;
     transform: scale(1.02);
+    text-shadow: 0 0 1px white;
   }
 `;
 // Text-shadow: 0 0 2px white;

@@ -39,17 +39,35 @@ const MovieCard = styled.div`
   }
 `;
 
-export const RateSpan = styled.span`
+export const RateSpan = styled.div`
   position: absolute;
   right: 1rem;
+  cursor: pointer;
   top: 1rem;
   z-index: 4;
-  padding: 5px;
+  display: flex;
   border-radius: 0.5rem;
-  color: #fff;
+  background-color: #f5de50;
+  /* padding: 5px; */
+  opacity: 0.9;
+  transition: all 0.3s linear;
+  & > p {
+    font-weight: 600;
+    padding: 5px;
+  }
+  & > span {
+    padding: 5px;
+    font-weight: 500;
+    color: white;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
   @media (max-width: ${({ theme }) => theme.size.xs}) {
     right: 0.5rem;
     top: 0.5rem;
+  }
+  &:hover {
+    opacity: 1;
+    transform: scale(1.02);
   }
 `;
 
@@ -103,12 +121,16 @@ export const MovieHeader = styled.div`
     & > img {
       position: relative;
       margin-right: 20px;
-      height: 8rem;
+      height: 100%;
+      max-height: 10rem;
       box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
+      /* @media (max-width: ${({ theme }) => theme.size.md}) {
+        height: 8rem;
+      }
+      @media (max-width: ${({ theme }) => theme.size.md}) {
+        height: 8rem;
+      } */
     }
-    /* @media (max-width: ${({ theme }) => theme.size.xs}) {
-      height: fit-content;
-    } */
   }
   & > div.textContainer {
     display: flex;
@@ -117,6 +139,7 @@ export const MovieHeader = styled.div`
     width: 100%;
     height: 8rem;
     gap: 0.5rem;
+    justify-content: space-between;
 
     @media (max-width: ${({ theme }) => theme.size.sm}) {
       font-weight: bolder;
@@ -131,7 +154,6 @@ export const MovieHeader = styled.div`
     & > h4 {
       color: #070707;
       text-shadow: 0 0 2px white;
-      /* font-weight: 400; */
     }
     & > p.runTime {
       margin-top: 1rem;
@@ -152,7 +174,6 @@ export const MovieDesc = styled.div`
   border: 1px solid red;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
   /* margin: 1.5rem; */
   margin-top: 1rem;
   height: 50%;
@@ -160,7 +181,8 @@ export const MovieDesc = styled.div`
   max-height: 15rem;
   width: 80%;
   @media (max-width: ${({ theme }) => theme.size.md}) {
-    margin: 0.5rem;
+    /* margin: 0.5rem; */
+    margin-left: 0;
     width: fit-content;
     height: fit-content;
     max-height: 18rem;

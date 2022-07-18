@@ -9,7 +9,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import GoogleButton from "react-google-button";
-import Flex, { ButtonStyleCard } from "../components/globalStyles/Flex";
+import Flex, { FormButton } from "../components/globalStyles/Flex";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { GoogleRegister, register } from "../auth/firebase";
 import toast from "react-hot-toast";
@@ -135,10 +135,7 @@ const SignUp = () => {
                 />
               </Grid>
             </Grid>
-            <ButtonStyleCard
-              // {/* <Button */}
-              // type="submit"
-              // fullWidth
+            <FormButton
               variant="contained"
               color="primary"
               className={classes.submit}
@@ -147,8 +144,7 @@ const SignUp = () => {
               // className={classes.submit}
             >
               Sign Up
-              {/* </Button> */}
-            </ButtonStyleCard>
+            </FormButton>
             <Flex style={{ marginBottom: "1rem" }}>
               <GoogleButton
                 // style={{ margi: "0" }}

@@ -19,6 +19,7 @@ const theme = {
     success: "#5cb85c",
     warning: "#f0ad4e",
     danger: "#d9534f",
+    btnColor: "#112756",
   },
   size: {
     xs: "500px",
