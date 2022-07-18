@@ -90,7 +90,7 @@ const MovieDetail = () => {
                 </div>
                 <div className="textContainer">
                   <h3>{movieDatas?.title}</h3>
-                  <h4>{movieDatas?.release_date}</h4>
+                  <h4>{movieDatas?.release_date.slice(0, 4)}</h4>
                   <p className="runTime">{movieDatas?.runtime} min</p>
                   <p className="genre">{movieDatas?.genres[0].name}</p>
                 </div>
@@ -117,7 +117,9 @@ const MovieDetail = () => {
           <img src={loadingGif} alt=""></img>
         </>
       )}
+      <button>asdsd</button>
     </MovieContainer>
+
     // </div>
   );
 };

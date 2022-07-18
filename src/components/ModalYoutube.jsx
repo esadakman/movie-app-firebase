@@ -23,6 +23,9 @@ export default function BasicModal({ trailerKey }) {
   return (
     <div>
       <Button onClick={handleOpen}>Watch Trailer</Button>
+      {/* <ButtonStyleCard style={{ width: "fit-content" }} onClick={handleOpen}>
+        Watch Trailer
+      </ButtonStyleCard> */}
       <Modal
         open={open}
         onClose={handleClose}

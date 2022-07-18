@@ -2,18 +2,20 @@ import styled from "styled-components";
 
 export const MovieContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 85vh;
   border: 1px red solid;
+  margin-bottom: 4rem;
 `;
 
 const MovieCard = styled.div`
   position: relative;
   display: block;
   width: 80vw;
-  height: 55vh;
+  height: 60vh;
   overflow: hidden;
   border-radius: 10px;
   font-size: 1rem;
@@ -92,18 +94,18 @@ export const MovieHeader = styled.div`
       box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
     }
     @media (max-width: ${({ theme }) => theme.size.xs}) {
-      display: none;
+      /* display: none; */
     }
   }
   & > div.textContainer {
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     height: 8rem;
     @media (max-width: ${({ theme }) => theme.size.sm}) {
       font-weight: bolder;
-      background-color: #24222278;
+      /* background-color: #24222278; */
       padding: 5px;
     }
     & > h3 {
@@ -117,6 +119,9 @@ export const MovieHeader = styled.div`
     }
     & > p.runTime {
       margin-top: 1rem;
+      @media (max-width: ${({ theme }) => theme.size.sm}) {
+        margin-top: 0;
+      }
       color: #171717;
       text-shadow: 0 0 2px white;
     }
@@ -141,10 +146,6 @@ export const MovieDesc = styled.div`
     width: 85%;
     height: 55%;
   }
-  @media (max-width: ${({ theme }) => theme.size.xs}) {
-    width: 80%;
-  }
-
   & > p {
     overflow: auto;
     color: #000;
