@@ -1,4 +1,3 @@
-import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 import { useAuthContext } from "../context/AuthContext";
@@ -11,9 +10,10 @@ import CardArea, {
 import SectionStyled, { DivStyled } from "./styles/NotFound.styled";
 import vincent from "../assets/vincent.gif";
 import loadingGif from "../assets/loading.svg";
-import Flex from "../components/globalStyles/Flex";
+import Flex, { FormButton } from "../components/globalStyles/Flex";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toastWarn } from "../helpers/ToastNotify";
 const Main = () => {
   // ! useState hooks
   const { userCheck, API_KEY } = useAuthContext();
@@ -46,10 +46,17 @@ const Main = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    navigate(`/${search}`);
+    // if (search && userCheck) {
+    //   getData(seachUrl + search)
+    // } else if (!userCheck) {
+    //   toast.error("Please log in to search a movie");
+    // } else {
+    //   toast.error("Please enter a text");
+    // }
     userCheck
       ? getData(seachUrl + search)
-      : toast.error("Please log in for search");
+      : toastWarn("Please log in for search");
+    navigate(`/${search}`);
     setSearch("");
   };
 
@@ -87,6 +94,13 @@ const Main = () => {
                 <img src={vincent} alt="" />
                 <h1 style={{ fontSize: "5rem" }}>Ooppss...</h1>
                 <p>Sorry, We couldn't find what you're looking for.</p>
+                <FormButton
+                  variant="contained"
+                  onClick={() => getData(url)}
+                  style={{ marginTop: "2rem" }}
+                >
+                  Go Back
+                </FormButton>
               </DivStyled>
             </SectionStyled>
           )}

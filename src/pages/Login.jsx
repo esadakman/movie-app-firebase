@@ -17,7 +17,7 @@ import GoogleButton from "react-google-button";
 import Flex, { FormButton } from "../components/globalStyles/Flex";
 import { GoogleRegister, login } from "../auth/firebase";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
-import toast from "react-hot-toast";
+import { toastWarn } from "../helpers/ToastNotify";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -61,7 +61,7 @@ const Login = () => {
     if (email && password) {
       await login(email, password, navigate);
     } else {
-      toast.error("Please fill out all fields.");
+      toastWarn("Please fill out all fields.");
     }
   };
 

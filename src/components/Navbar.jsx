@@ -19,7 +19,7 @@ const Navbar = () => {
   // onClick={() => setMovies("")}
   return (
     <Nav justify="space-between" wrap="wrap">
-      <Logo to="/">
+      <Logo to="/main">
         <IMG src={logo} alt="logo" />
         <p>
           <i>Movie App</i>
@@ -33,9 +33,12 @@ const Navbar = () => {
       <Menu isOpen={isOpen} onClick={() => setIsOpen(false)}>
         {/* <MenuLink to="/">Home</MenuLink> */}
         {userCheck ? (
-          <MenuLink to="/" onClick={logout}>
-            Log Out
-          </MenuLink>
+          <>
+            <h5 className="mb-0 text-capitalize">{userCheck.displayName}</h5>
+            <MenuLink to="/" onClick={logout}>
+              Log Out
+            </MenuLink>
+          </>
         ) : (
           <>
             <MenuLink to="register">Register</MenuLink>

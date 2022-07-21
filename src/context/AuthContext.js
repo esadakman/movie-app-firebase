@@ -5,7 +5,7 @@ const AuthContext = createContext({});
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 // ? consume function (kendi hook'umu oluşturarak useContext yerine kullandım)
-export const useAuthContext = () => {
+export const useAuthContext  = () => {
   return useContext(AuthContext);
 };
 

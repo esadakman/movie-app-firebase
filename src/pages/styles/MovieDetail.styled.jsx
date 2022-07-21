@@ -6,7 +6,7 @@ export const MovieContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 85vh;
+  height: 82vh;
   margin-bottom: 4rem;
 `;
 

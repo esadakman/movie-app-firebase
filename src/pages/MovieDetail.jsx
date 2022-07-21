@@ -32,7 +32,6 @@ const MovieDetail = () => {
   const getMovieDetail = async () => {
     try {
       const { data } = await axios.get(movieDetailUrl);
-      // console.log(data);
       setMovieDatas(data);
       // console.log(typeof movieDatas?.genres);
 

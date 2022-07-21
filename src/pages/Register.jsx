@@ -12,7 +12,8 @@ import GoogleButton from "react-google-button";
 import Flex, { FormButton } from "../components/globalStyles/Flex";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { GoogleRegister, register } from "../auth/firebase";
-import toast from "react-hot-toast";
+import { Button } from "@mui/material";
+import { toastWarn } from "../helpers/ToastNotify";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +63,7 @@ const Register = () => {
     if (email && password && firstName && lastName) {
       await register(email, password, displayName, navigate);
     } else {
-      toast.error("Please fill out all fiels.");
+      toastWarn("Please fill out all fields.");
     }
     // const user = register(email, password, displayName, navigate);
   };
@@ -135,7 +136,7 @@ const Register = () => {
                 />
               </Grid>
             </Grid>
-            <FormButton
+            <Button
               variant="contained"
               color="primary"
               className={classes.submit}
@@ -144,7 +145,7 @@ const Register = () => {
               // className={classes.submit}
             >
               Sign Up
-            </FormButton>
+            </Button>
             <Flex style={{ marginBottom: "1rem" }}>
               <GoogleButton
                 // style={{ margi: "0" }}

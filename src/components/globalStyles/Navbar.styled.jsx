@@ -61,6 +61,11 @@ export const Menu = styled(Flex)`
     transition: max-height 0.3s ease-in;
     margin-top: 5px;
   }
+  & > h5 {
+    color: ${({ theme }) => theme.colors.turqo};
+    margin-right: 1rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const MenuLink = styled(Link)`
