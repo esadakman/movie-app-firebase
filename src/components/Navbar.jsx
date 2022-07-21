@@ -42,7 +42,7 @@ const Navbar = () => {
         ) : (
           <>
             <MenuLink to="register">Register</MenuLink>
-            <MenuLink to="login">Log In</MenuLink>
+            <MenuLink to="login">Login</MenuLink>
           </>
         )}
       </Menu>

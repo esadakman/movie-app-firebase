@@ -7,6 +7,7 @@ import {
   updateProfile,
   GoogleAuthProvider,
   signInWithPopup,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 import toast from "react-hot-toast";
@@ -36,7 +37,8 @@ export const register = async (email, password, displayName, navigate) => {
     );
     await updateProfile(auth.currentUser, { displayName: displayName });
     navigate("/");
-    toastSuccess("Signed Up");
+    console.log(displayName);
+    toastSuccess("Signed Up ");
     return user;
   } catch (error) {
     if (error.code === "auth/email-already-in-use") {
@@ -66,6 +68,8 @@ export const login = async (email, password, navigate) => {
       error.code === "auth/invalid-email"
     ) {
       toastError("Your email or password is incorrect. \nPlease Try Again");
+    } else if (error.code === "auth/user-not-found") {
+      toastWarn("User not found.");
     } else {
       toastError(error.message);
     }
@@ -95,6 +99,23 @@ export const GoogleRegister = (navigate) => {
     .catch((error) => {
       if (error.code === "auth/popup-closed-by-user") {
         console.log("Popup closed by user");
+      } else {
+        toastError(error.message);
+      }
+    });
+};
+
+export const forgotPassword = (email) => {
+  //? Email yoluyla şifre sıfırlama için kullanılan firebase metodu
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Password reset email sent!
+      toastWarn("Please check your mail box!");
+      // alert("Please check your mail box!");
+    })
+    .catch((error) => {
+      if (error.code === "auth/missing-email") {
+        toastWarn("Please enter your mail adress!");
       } else {
         toastError(error.message);
       }
